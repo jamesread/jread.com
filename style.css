@@ -4,6 +4,20 @@ body {
 	text-align: center;
 }
 
+ul {
+  text-align: left;
+}
+
+img.profile {
+  text-align: center;
+  font-size: 3em;
+	border-radius: 50%;
+  vertical-align: middle;
+  width: 2em;
+  height: 2em;
+  margin-top: 1em;
+  margin-bottom: .4em;
+}
 #content {
 	width: 32em;
 	margin: auto;
@@ -22,9 +36,8 @@ body {
 h1 {
 	font-size: 2.2em;
 	font-weight: lighter;
-	margin-top: 2.7em;
+	margin-top: 0;
 	margin-bottom: 1.0em;
-	border-bottom: 1px solid #999;
 }
 
 abbr {
@@ -71,5 +84,4 @@ h1 {
 	margin-top: 1.5em;
 }
 }
-
 
