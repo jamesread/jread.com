@@ -1,7 +1,17 @@
 body {
 	font-family: sans-serif;
 	font-size: 12pt;
-	text-align: center;
+}
+
+header {
+  border-bottom: 1px solid #dee3e7;
+  padding-bottom: 2em;
+}
+
+header ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 ul {
@@ -15,8 +25,6 @@ img.profile {
   vertical-align: middle;
   width: 2em;
   height: 2em;
-  margin-top: 1em;
-  margin-bottom: .4em;
 }
 #content {
 	width: 32em;
@@ -36,8 +44,14 @@ img.profile {
 h1 {
 	font-size: 2.2em;
 	font-weight: lighter;
-	margin-top: 0;
-	margin-bottom: 1.0em;
+	margin: 0;
+  margin-left: .5em;
+  flex-grow: 1;
+  text-align: left;
+}
+
+h2 {
+  font-weight: lighter;
 }
 
 abbr {
@@ -68,6 +82,19 @@ hr {
 	border: 0;
 	border-bottom: 1px solid gray;
 	margin: 3em;
+}
+
+section {
+  max-width: 720px;
+  margin-top: 3em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flexrow {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
 
 @media only screen and (max-width: 480px) {
