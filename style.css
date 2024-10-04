@@ -98,6 +98,15 @@ section {
   flex-direction: row;
 }
 
+ul {
+  list-style: '\25b9    ';
+  list-style-position: outside;
+}
+
+ul li {
+  margin-bottom: 1em;
+}
+
 @media only screen and (max-width: 480px) {
   #content {
     margin: 0;
