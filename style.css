@@ -107,6 +107,10 @@ ul li {
   margin-bottom: 1em;
 }
 
+a svg {
+  vertical-align: sub;
+}
+
 @media only screen and (max-width: 480px) {
   #content {
     margin: 0;
