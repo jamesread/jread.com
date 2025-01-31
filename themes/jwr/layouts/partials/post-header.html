@@ -1,0 +1,22 @@
+<header>
+	<h2>
+		<a href = "{{.RelPermalink}}">{{- .Title -}}</a>
+	</h2>
+	{{ partial "social-share.html" . }}
+
+	<aside>
+		<time>
+			{{- .Date | time.Format (default "Jan 2, 2006" .Site.Params.date_format) -}}
+		</time>, 
+		{{  .ReadingTime }} min read 
+		(~{{ .FuzzyWordCount }} words)
+	</aside>
+
+</header>
+
+{{ $featured_image := partial "func/GetFeaturedImage.html" . }}
+{{ if eq .Site.Params.usefeaturedimage true }}
+<img src="{{ $featured_image }}" class = "featured" title = "{{ .Params.featured_image_caption | default "Sorry, this image does not have a title." }}" />
+{{ end }}
+
+

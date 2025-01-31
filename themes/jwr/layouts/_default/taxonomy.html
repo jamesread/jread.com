@@ -1,0 +1,10 @@
+{{ define "main" }}
+
+<aside class = "currentPage">You are viewing a tag: <strong class = "tag">{{ .Title }}</strong></aside><br />
+
+<section>
+	{{ range  .Pages }}
+	{{ partial "post-summary.html" . }}
+	{{ end }}
+</section>
+{{ end }}

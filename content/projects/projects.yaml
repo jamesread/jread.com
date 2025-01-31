@@ -1,0 +1,44 @@
+---
+- name: OliveTin
+  repo: OliveTin/OliveTin
+  logo: https://raw.githubusercontent.com/OliveTin/OliveTin/refs/heads/main/webui.dev/OliveTinLogo.png
+  docs: https://docs.olivetin.app
+  tags:
+    - Production
+  description: |
+    Give safe and simple access to predefined shell commands from a web interface.
+
+- name: Faridoon
+  repo: jamesread/Faridoon
+  tags:
+    - Production
+  description: |
+    Publish your favourite chat quotes.
+
+- name: uncomplicated-alert-receiver
+  repo: jamesread/uncomplicated-alert-receiver
+  tags:
+    - Production
+  description: |
+    Show Prometheus Alertmanager alerts on heads up displays.
+
+- name: Sicroc
+  repo: jamesread/Sicroc
+  tags:
+    - Beta
+  description: |
+    Build nocode data based webapps on real databases.
+
+- name: Japella
+  repo: jamesread/Japella
+  tags:
+    - Sandbox
+  description: |
+    A chatbot, which is multi-protocol, powerful and highly resilient.
+
+- name: Vitae
+  repo: jamesread/Vitae
+  tags:
+    - Sandbox
+  description: |
+    Lifecycle your software. Plan, Visualize, Document, Integrate, and Replace.

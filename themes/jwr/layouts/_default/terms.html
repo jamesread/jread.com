@@ -1,0 +1,9 @@
+{{ define "main" }}
+<section>
+	<ul class = "terms">
+		{{ range sort .Data.Pages ".Pages" "desc" }}
+		<li><a class = "tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> - {{ len .Pages }} {{ if eq (len .Pages) 1 }}article{{ else }}articles{{ end }}</li>
+		{{ end }}
+	</ul>
+</section>
+{{ end }}

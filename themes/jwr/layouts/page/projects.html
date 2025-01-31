@@ -1,0 +1,90 @@
+{{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
+{{ define "main" }}
+
+		<style>
+h2 {
+	margin-bottom: .5em;
+}
+
+ul.tags {
+	margin-bottom: .5em;
+}
+
+img.logo {
+	width: 6em;
+	vertical-align: top;
+	box-shadow: none !important;
+}
+
+img {
+	max-width: 100%;
+	margin: 0;
+}
+
+article.project {
+	display: flex;
+	flex-direction: row;
+}
+
+article div:first-child {
+	flex-grow: 1;
+}
+		</style>
+
+<h2>Project highlights page</h2>
+<p>This page is a curated list of my top projects, with short descriptions and links about what they do.</p>
+
+	{{ $data := dict }}
+	{{ $path := "projects.yaml" }}
+	{{ with .Resources.Get $path }}
+		{{ with .Err }}
+			error {{ .Err }}
+		{{ end }}
+
+		{{ with . | transform.Unmarshal }}
+			{{ $data = . }}
+		{{ end }}
+	{{ else }}
+		{{ errorf "Very unable to get resource. %q %q" $data $path }}
+	{{ end }}
+
+	{{ range $data }}
+		<article class = "project">
+			<div>
+				<h2>
+					{{ .name }}
+				</h2>
+
+			{{ range .tags }}
+				<ul class = "no-bullets tags">
+					<li><a href = "">{{ . }}</a></li>
+				</ul>
+			{{ end }}
+
+
+				<aside class = "mt3">{{ .description }}</aside>
+			<ul>
+				<li><a href = "https://github.com/{{ .repo }}">{{ .name }} on GitHub</a></li>
+
+				{{ $docs := .docs }}
+				{{ if not $docs }}
+					{{ $docs = printf "https://jamesread.github.io/%s" .name }}
+				{{ end }}
+
+				<li><a href = "{{ $docs }}">{{ .name }} Documentation</a></li>
+
+			{{ range .links }}
+			{{ end }}
+			</ul>
+			</div>
+			<div>
+				{{ $logo := .logo }}
+				{{ if not $logo }}
+					{{ $logo = printf "https://raw.githubusercontent.com/%s/refs/heads/main/logo.png" .repo }}
+				{{ end }}
+
+				<img src = "{{ $logo }}" alt = "{{ .name }} logo" class = "logo" />
+			</div>
+		</article>
+	{{ end }}
+{{ end }}

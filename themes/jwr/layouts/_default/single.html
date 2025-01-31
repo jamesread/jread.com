@@ -1,0 +1,44 @@
+{{ define "header" }}
+{{ partial "post-header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+{{ $section := .Site.GetPage "section" .Section }}
+<aside class = "currentPage">
+	You are viewing a single post.
+</aside>
+<article>
+	{{ partial "post-header.html" . }}
+
+	{{ if and .Params.UseFeaturedImages .Params.featured_image_credit }}
+	<aside class = "featuredImageCredit">
+		Featured image by <a href = "{{ .Params.featured_image_url }}">{{ .Params.featured_image_credit }}</a>
+	</aside>
+	{{ end }}
+	<div>
+		{{- .Content -}}
+	</div>
+
+	<aside> 
+		<h2>Tags</h2>
+		<br />
+		{{- partial "tags.html" . -}}
+		<br />
+	</aside>
+
+	{{- partial "menu-contextual.html" . -}}
+
+	<div>
+		{{ if .Site.DisqusShortname }}
+		{{ template "_internal/disqus.html" . }}
+		{{ end }}
+	</div>
+</article>
+
+{{ if .Params.Medium }}
+<aside>
+	<p>This article is also published on <a href = "{{ .Params.Medium }}">Medium.com</a>.</p>
+</aside>
+{{ end }}
+
+{{ end }}

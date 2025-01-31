@@ -1,0 +1,18 @@
+baseURL: 'https://example.org/'
+languageCode: 'en-gb'
+title: "James Read's Homepage"
+theme: 'jwr'
+
+menu:
+  main:
+    - name: 'Home'
+      pageRef: '/'
+      weight: 1
+
+    - name: 'Blog'
+      pageRef: 'https://blog.jread.com'
+      weight: 2
+
+    - name: 'Projects'
+      pageRef: '/projects/'
+      weight: 3

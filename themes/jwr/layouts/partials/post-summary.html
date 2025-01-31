@@ -1,0 +1,11 @@
+<article>
+	{{ partial "post-header.html" . }}
+
+	{{- partial "tags.html" . -}}
+
+	<div>
+		{{ .Summary }}
+	</div>
+	<br />
+	<a href="{{.RelPermalink}}">Continue reading...</a>
+</article>
