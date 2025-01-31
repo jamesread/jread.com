@@ -24,8 +24,8 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install npx
-        run: npm install -g npx
+      - name: Install postcss-cli
+        run: npm install postcss-cli
 
       - name: Build And Deploy
         id: builddeploy
