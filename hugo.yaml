@@ -1,7 +1,7 @@
-baseURL: 'https://example.org/'
 languageCode: 'en-gb'
 title: "James Read's Homepage"
 theme: 'jwr'
+baseURL: 'https://jread.com'
 
 menu:
   main:
