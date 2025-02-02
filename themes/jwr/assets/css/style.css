@@ -54,11 +54,13 @@ nav ul {
 
 nav ul li {
   display: inline-block;
+  margin-right: 1em;
+  text-align: center;
 }
 
 nav ul li a {
-  margin-right: 1em;
   text-decoration: none;
+  display: block;
 }
 
 nav ul li a:hover {
@@ -67,6 +69,10 @@ nav ul li a:hover {
 
 nav ul li.last {
   float: right;
+}
+
+nav ul li.currentPage {
+  border-bottom: 1px solid red;
 }
 
 a {

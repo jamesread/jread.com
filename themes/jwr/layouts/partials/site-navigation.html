@@ -1,8 +1,19 @@
 <nav>
+	{{ $currentPage := . }}
+
 	{{ if .Site.Menus.main }}
 	<ul>
 		{{ range .Site.Menus.main }}
-		<li class = "{{ .Params.Class }}"><a href = "{{ .PageRef }}">{{ .Name }}</a></li>
+		<li class = "{{ .Params.Class }}">
+			<a href = "{{ .PageRef }}">{{ .Name }}</a>
+			<span class = "indictor">
+				{{if $currentPage.IsMenuCurrent .Menu . }}
+				&#x1F781;
+				{{ else }}
+				&nbsp;
+				{{ end }}
+			</span>
+		</li>
 		{{ end }}
 	</ul>
 	{{ end }}
