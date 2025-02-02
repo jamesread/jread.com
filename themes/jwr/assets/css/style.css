@@ -94,6 +94,7 @@ a:active, a:focus {
 main {
   margin: auto;
   max-width: 720px;
+  padding: .5em;
 }
 
 footer {
