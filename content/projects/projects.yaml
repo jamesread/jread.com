@@ -6,6 +6,7 @@
   tags:
     - Production
     - 3k stars
+    - GoConnSpa Stack
   description: |
     Give safe and simple access to predefined shell commands from a web interface.
 
@@ -13,6 +14,7 @@
   repo: jamesread/Faridoon
   tags:
     - Production
+    - LAMP Stack
   description: |
     Publish your favourite chat quotes.
 
@@ -20,6 +22,7 @@
   repo: jamesread/uncomplicated-alert-receiver
   tags:
     - Production
+    - GoConnSpa Stack
   description: |
     Show Prometheus Alertmanager alerts on heads up displays.
 
@@ -27,6 +30,7 @@
   repo: jamesread/Sicroc
   tags:
     - Beta
+    - LAMP Stack
   description: |
     Build nocode data based webapps on real databases.
 
@@ -34,6 +38,7 @@
   repo: jamesread/Japella
   tags:
     - Sandbox
+    - GoConnSpa Stack
   description: |
     A chatbot, which is multi-protocol, powerful and highly resilient.
 
@@ -42,6 +47,7 @@
   logo: https://raw.githubusercontent.com/jamesread/SpaghettiCannon/refs/heads/main/var/logo.png
   tags:
     - Sandbox
+    - GoConnSpa Stack
   description: |
     A personal quality of life tracker.
 
@@ -49,6 +55,7 @@
   repo: jamesread/Vitae
   tags:
     - Prototype
+    - GoConnSpa Stack
   description: |
     Lifecycle your software. Plan, Visualize, Document, Integrate, and Replace.
 
@@ -56,5 +63,6 @@
   repo: jamesread/StencilBox
   tags:
     - Prototype
+    - GoConnSpa Stack
   description: |
     Generate super speedy simple static sites, from sleek templates.
