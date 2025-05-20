@@ -39,6 +39,7 @@
 
 - name: SpaghettiCannon
   repo: jamesread/SpaghettiCannon
+  logo: https://raw.githubusercontent.com/jamesread/SpaghettiCannon/refs/heads/main/var/logo.png
   tags:
     - Sandbox
   description: |
