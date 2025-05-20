@@ -5,6 +5,7 @@
   docs: https://docs.olivetin.app
   tags:
     - Production
+    - 3k stars
   description: |
     Give safe and simple access to predefined shell commands from a web interface.
 
@@ -36,9 +37,23 @@
   description: |
     A chatbot, which is multi-protocol, powerful and highly resilient.
 
-- name: Vitae
-  repo: jamesread/Vitae
+- name: SpaghettiCannon
+  repo: jamesread/SpaghettiCannon
   tags:
     - Sandbox
   description: |
+    A personal quality of life tracker.
+
+- name: Vitae
+  repo: jamesread/Vitae
+  tags:
+    - Prototype
+  description: |
     Lifecycle your software. Plan, Visualize, Document, Integrate, and Replace.
+
+- name: StencilBox
+  repo: jamesread/StencilBox
+  tags:
+    - Prototype
+  description: |
+    Generate super speedy simple static sites, from sleek templates.
