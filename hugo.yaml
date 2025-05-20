@@ -3,6 +3,8 @@ title: "James Read's Homepage"
 theme: 'jwr'
 baseURL: 'https://jread.com'
 
+copyright: 'James Read'
+
 params:
   author:
     email: contact@jread.com
