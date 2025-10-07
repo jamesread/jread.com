@@ -259,6 +259,32 @@ ul.pagination li {
   display: inline-block;
 }
 
+.annotation {
+	display: block;
+}
+
+.annotation span {
+	font-family: sans;
+	padding: .5em;
+}
+
+.annotation-key {
+  font-weight: bold;
+  background-color: #58f;
+  color: white;
+  border-top-left-radius: .8em;
+  border-bottom-left-radius: .8em;
+}
+
+.annotation-value {
+  font-weight: bold;
+  background-color: #36f;
+  color: white;
+  border-top-right-radius: .8em;
+  border-bottom-right-radius: .8em;
+  margin-right: .5em;
+}
+
 figure img {
   margin-bottom: 0;
 }

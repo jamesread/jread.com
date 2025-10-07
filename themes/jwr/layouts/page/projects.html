@@ -10,6 +10,13 @@ ul.tags {
 	margin-bottom: .5em;
 }
 
+div.logo-container {
+	text-align: center;
+	flex-grow: 0;
+	flex-shrink: 0;
+	margin-left: 1em;
+}
+
 img.logo {
 	width: 6em;
 	vertical-align: top;
@@ -36,11 +43,7 @@ article div:first-child {
 
 	{{ $data := dict }}
 	{{ $path := "projects.yaml" }}
-	{{ with .Resources.Get $path }}
-		{{ with .Err }}
-			error {{ .Err }}
-		{{ end }}
-
+	{{ with (.Resources.Get $path) }}
 		{{ with . | transform.Unmarshal }}
 			{{ $data = . }}
 		{{ end }}
@@ -56,6 +59,10 @@ article div:first-child {
 				</h2>
 
 				<ul class = "no-bullets tags">
+					{{ range $k, $v := .annotations }}
+					<li><span class = "annotation"><span class = "annotation-key">{{ $k }}</span><span class = "annotation-value">{{ $v }}</span></span></li>
+					{{ end }}
+
 					{{ range .tags }}
 					<li><a href = "">{{ . }}</a></li>
 					{{ end }}
@@ -76,7 +83,7 @@ article div:first-child {
 			{{ end }}
 			</ul>
 			</div>
-			<div>
+			<div class = "logo-container">
 				{{ $logo := .logo }}
 				{{ if not $logo }}
 					{{ $logo = printf "https://raw.githubusercontent.com/%s/refs/heads/main/logo.png" .repo }}

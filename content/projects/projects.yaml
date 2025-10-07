@@ -1,38 +1,100 @@
 ---
 - name: OliveTin
   repo: OliveTin/OliveTin
-  logo: https://raw.githubusercontent.com/OliveTin/OliveTin/refs/heads/main/webui.dev/OliveTinLogo.png
+  logo: https://raw.githubusercontent.com/OliveTin/OliveTin/refs/heads/main/frontend/OliveTinLogo.png
   docs: https://docs.olivetin.app
   tags:
-    - Production
-    - 3k stars
-    - GoConnSpa Stack
+    - Golang
+    - ConnectRPC
+    - Vue
+  annotations:
+    Maturity: Production
+    Stars: 3000+
+    Users: 1000+ 
+    Involvement: Founder
+    Started: 2020
   description: |
     Give safe and simple access to predefined shell commands from a web interface.
+
+- name: uncomplicated-alert-receiver
+  repo: jamesread/uncomplicated-alert-receiver
+  annotations:
+    Maturity: Production
+    Stars: 75+
+    Involvement: Founder
+    Started: 2024
+  tags:
+    - Golang
+    - REST API
+  description: |
+    Show Prometheus Alertmanager alerts on heads up displays.
+
+- name: lanlist.info
+  repo: jamesread/lanlist
+  logo: https://lanlist.info/resources/images/logoHugeWhiteSquare.png
+  annotations:
+    Maturity: Production
+    Page Hits: 2k+/month
+    Involvement: Founder
+    Started: ~2011
+  tags:
+    - PHP
+    - LAMP Stack
+  description: |
+    A list of LAN parties and events around the world.
+
+- name: StencilBox
+  repo: jamesread/StencilBox
+  annotations:
+    Maturity: Beta
+    Stars: 40+
+    Involvement: Founder
+    Started: 2025
+  tags:
+    - Golang
+  description: |
+    Build data driven super speedy simple static sites, with sleek templates.
 
 - name: Faridoon
   repo: jamesread/Faridoon
   tags:
     - Production
     - LAMP Stack
+  annotations:
+    Maturity: Production
+    Stars: 40+
+    Users: ~10
+    Involvement: Founder
   description: |
     Publish your favourite chat quotes.
-
-- name: uncomplicated-alert-receiver
-  repo: jamesread/uncomplicated-alert-receiver
-  tags:
-    - Production
-    - GoConnSpa Stack
-  description: |
-    Show Prometheus Alertmanager alerts on heads up displays.
 
 - name: Sicroc
   repo: jamesread/Sicroc
   tags:
-    - Beta
     - LAMP Stack
+  annotations:
+    Maturity: Beta
+    Involvement: Founder
+    Started: ~2007
   description: |
     Build nocode data based webapps on real databases.
+
+    This is more of a personal project that I've used every day for almost 20 years. It's successor is SickRock.
+
+- name: SickRock
+  repo: jamesread/SickRock
+  logo: https://raw.githubusercontent.com/jamesread/SickRock/main/frontend/src/resources/images/logo.png
+  tags:
+    - Golang
+  annotations:
+    Maturity: Alpha
+    Involvement: Founder
+    Started: 2025
+    AI: Vibecoded
+  description: |
+    Build nocode data based webapps on real databases.
+
+    This is the successor to Sicroc, which I've used every day for almost 20 years. This app is Vibe coded.
 
 - name: Japella
   repo: jamesread/Japella
@@ -58,11 +120,3 @@
     - GoConnSpa Stack
   description: |
     Lifecycle your software. Plan, Visualize, Document, Integrate, and Replace.
-
-- name: StencilBox
-  repo: jamesread/StencilBox
-  tags:
-    - Prototype
-    - GoConnSpa Stack
-  description: |
-    Generate super speedy simple static sites, from sleek templates.
