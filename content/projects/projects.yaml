@@ -120,3 +120,17 @@
     - GoConnSpa Stack
   description: |
     Lifecycle your software. Plan, Visualize, Document, Integrate, and Replace.
+
+- name: PicoCrank
+  repo: jamesread/picocrank
+  tags:
+    - vue
+  description: |
+    A lightweight set of Vue components built on the FemtoCrank global CSS theme.
+
+- name: FemtoCrank
+  repo: jamesread/femtocrank
+  tags:
+    - css
+  description: |
+    CSS theme for high accessibility and zero dependencies
