@@ -1,0 +1,39 @@
+{{ $p := . }}
+<article class="project">
+	<div>
+		<h2><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
+
+		<ul class="no-bullets tags">
+			{{ range $k, $v := $p.Param "annotations" }}
+				<li><span class="annotation"><span class="annotation-key">{{ $k }}</span><span class="annotation-value">{{ $v }}</span></span></li>
+			{{ end }}
+
+			{{ range $p.Param "tags" }}
+			<li><a href="">{{ . }}</a></li>
+			{{ end }}
+		</ul>
+
+		<aside class="mt3">{{ $p.Param "description" | default $p.Content | markdownify }}</aside>
+		<ul>
+			<li><a href="https://github.com/{{ $p.Param "repo" }}">{{ $p.Title }} on GitHub</a></li>
+
+			{{ $docs := $p.Param "docs" }}
+			{{ if not $docs }}
+				{{ $docs = printf "https://jamesread.github.io/%s" $p.Title }}
+			{{ end }}
+
+			<li><a href="{{ $docs }}">{{ $p.Title }} Documentation</a></li>
+
+			{{ range $p.Param "links" }}
+			{{ end }}
+		</ul>
+	</div>
+	<div class="logo-container">
+		{{ $logo := $p.Param "logo" }}
+		{{ if not $logo }}
+			{{ $logo = printf "https://raw.githubusercontent.com/%s/refs/heads/main/logo.png" ($p.Param "repo") }}
+		{{ end }}
+
+		<img src="{{ $logo }}" alt="{{ $p.Title }} logo" class="logo" />
+	</div>
+</article>

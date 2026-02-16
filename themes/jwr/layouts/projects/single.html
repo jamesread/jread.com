@@ -1,0 +1,16 @@
+{{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
+{{ define "main" }}
+
+<style>
+h2 { margin-bottom: .5em; }
+ul.tags { margin-bottom: .5em; }
+div.logo-container { text-align: center; flex-grow: 0; flex-shrink: 0; margin-left: 1em; }
+img.logo { width: 6em; vertical-align: top; box-shadow: none !important; }
+img { max-width: 100%; margin: 0; }
+article.project { display: flex; flex-direction: row; }
+article div:first-child { flex-grow: 1; }
+</style>
+
+{{ partial "project-card.html" . }}
+
+{{ end }}

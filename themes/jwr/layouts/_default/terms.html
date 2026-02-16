@@ -1,8 +1,11 @@
+{{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
 {{ define "main" }}
 <section>
-	<ul class = "terms">
+	<h2>{{ if eq .Section "types" }}By use case (type){{ else }}By technical stack{{ end }}</h2>
+	<p>Choose a category to see projects.</p>
+	<ul class="terms">
 		{{ range sort .Data.Pages ".Pages" "desc" }}
-		<li><a class = "tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> - {{ len .Pages }} {{ if eq (len .Pages) 1 }}article{{ else }}articles{{ end }}</li>
+		<li><a class="tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> — {{ len .Pages }} {{ if eq (len .Pages) 1 }}project{{ else }}projects{{ end }}</li>
 		{{ end }}
 	</ul>
 </section>

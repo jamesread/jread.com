@@ -1,0 +1,58 @@
+{{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
+{{ define "main" }}
+
+<style>
+h2 { margin-bottom: .5em; }
+ul.tags { margin-bottom: .5em; }
+div.logo-container { text-align: center; flex-grow: 0; flex-shrink: 0; margin-left: 1em; }
+img.logo { width: 6em; vertical-align: top; box-shadow: none !important; }
+img { max-width: 100%; margin: 0; }
+article.project { display: flex; flex-direction: row; }
+article div:first-child { flex-grow: 1; }
+.taxonomy-links { margin-top: 1.5em; }
+.taxonomy-links h3 { margin-bottom: 0.5em; }
+.taxonomy-links li { margin-bottom: 0.25em; }
+.taxonomy-section { margin-top: 2em; }
+</style>
+
+<h2>Project highlights</h2>
+{{ .Content }}
+
+<section class="taxonomy-links">
+	<h3>Browse by use case (type)</h3>
+	<ul>
+		{{ range .Site.Taxonomies.types }}
+		<li><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a> ({{ len .Pages }} {{ if eq (len .Pages) 1 }}project{{ else }}projects{{ end }})</li>
+		{{ end }}
+	</ul>
+	<p><a href="{{ "/types/" | relLangURL }}">All types</a></p>
+
+	<h3>Browse by technical stack</h3>
+	<ul>
+		{{ range .Site.Taxonomies.stack }}
+		<li><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a> ({{ len .Pages }} {{ if eq (len .Pages) 1 }}project{{ else }}projects{{ end }})</li>
+		{{ end }}
+	</ul>
+	<p><a href="{{ "/stack/" | relLangURL }}">All stacks</a></p>
+
+	<h3>Browse by AI Usage</h3>
+	<p>If you're wondering what these levels are, see <a href = "https://blog.jread.com/posts/ai-levels-of-autonomy-in-software-engineering/">my blog post about levels of AI autonomy</a>.</p>
+	<ul>
+		{{ range .Site.Taxonomies.ai_usage }}
+		<li><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a
+> ({{ len .Pages }} {{ if eq (len .Pages) 1 }}project{{ else }}projects{{ end }})</li>
+		{{ end }}
+	</ul>
+</section>
+
+{{ $featured := where .Pages ".Params.featured" true }}
+{{ if $featured }}
+<section class="taxonomy-section">
+	<h2>Featured projects</h2>
+	{{ range $featured }}
+		{{ partial "project-card.html" . }}
+	{{ end }}
+</section>
+{{ end }}
+
+{{ end }}

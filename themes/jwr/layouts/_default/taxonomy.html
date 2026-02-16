@@ -1,10 +1,17 @@
 {{ define "main" }}
 
-<aside class = "currentPage">You are viewing a tag: <strong class = "tag">{{ .Title }}</strong></aside><br />
+<aside class="currentPage">You are viewing: <strong class="tag">{{ .Title }}</strong></aside><br />
 
 <section>
-	{{ range  .Pages }}
-	{{ partial "post-summary.html" . }}
+	{{ $pages := .Pages }}
+	{{ if and (gt (len $pages) 0) (eq (index $pages 0).Section "projects") }}
+		{{ range $pages }}
+			{{ partial "project-card.html" . }}
+		{{ end }}
+	{{ else }}
+		{{ range $pages }}
+			{{ partial "post-summary.html" . }}
+		{{ end }}
 	{{ end }}
 </section>
 {{ end }}

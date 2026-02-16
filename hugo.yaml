@@ -3,6 +3,11 @@ title: "James Read's Homepage"
 theme: 'jwr'
 baseURL: 'https://jread.com'
 
+taxonomies:
+  types: types   # use case (annotation "type")
+  stack: stack   # technical stack
+  ai_usage: ai_usage   # how AI is used in the project
+
 copyright: 'James Read'
 
 params:
@@ -21,5 +26,5 @@ menu:
       weight: 2
 
     - name: 'Projects'
-      pageRef: '/projects/index.html'
+      pageRef: '/projects/'
       weight: 3
