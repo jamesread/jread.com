@@ -1,12 +1,13 @@
 ---
 title: Sicroc
-types: [Personal productivity]
-stack: [LAMP]
+types: "Personal productivity"
+ai_usage: "Level 0: No AI"
+technologies: [LAMP]
 repo: jamesread/Sicroc
 tags: [LAMP Stack]
+maturity: Beta
+involvement: Founder
 annotations:
-  Maturity: Beta
-  Involvement: Founder
   Started: "~2007"
 description: |
   Build nocode data based webapps on real databases.

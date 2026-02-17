@@ -216,7 +216,7 @@ ul.tags li {
   display: inline-block;
 }
 
-ul.tags li a, .tag {
+.tag {
   font-family: sans;
   padding: .5em;
   margin-right: .5em;
@@ -263,7 +263,7 @@ ul.pagination li {
 	display: block;
 }
 
-.annotation span {
+.annotation span, .annotation a {
 	font-family: sans;
 	padding: .5em;
 }

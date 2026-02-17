@@ -1,7 +1,7 @@
 {{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
 {{ define "main" }}
 <section>
-	<h2>{{ if eq .Section "types" }}By use case (type){{ else }}By technical stack{{ end }}</h2>
+	<h2>{{ if eq .Section "types" }}By use case (type){{ else if eq .Section "maturity" }}By maturity{{ else if eq .Section "involvement" }}By involvement{{ else if eq .Section "technologies" }}By technical stack{{ else if eq .Section "ai_usage" }}By AI usage{{ else }}{{ .Title }}{{ end }}</h2>
 	<p>Choose a category to see projects.</p>
 	<ul class="terms">
 		{{ range sort .Data.Pages ".Pages" "desc" }}

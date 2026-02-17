@@ -5,8 +5,10 @@ baseURL: 'https://jread.com'
 
 taxonomies:
   types: types   # use case (annotation "type")
-  stack: stack   # technical stack
+  technologies: technologies   # technical stack
   ai_usage: ai_usage   # how AI is used in the project
+  maturity: maturity   # project maturity (Production, Beta, Alpha, Sandbox)
+  involvement: involvement   # role (e.g. Founder)
 
 copyright: 'James Read'
 

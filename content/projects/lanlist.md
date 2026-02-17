@@ -1,14 +1,15 @@
 ---
 title: lanlist.info
-types: [Community]
-stack: [LAMP]
+ai_usage: "Level 0: No AI"
+types: "Community"
+technologies: [PHP,  MySQL, Apache]
 repo: jamesread/lanlist
 logo: https://lanlist.info/resources/images/logoHugeWhiteSquare.png
 tags: [PHP, LAMP Stack]
+maturity: Production
+involvement: Founder
 annotations:
-  Maturity: Production
   "Page Hits": 2k+/month
-  Involvement: Founder
   Started: "~2011"
   AI: None
 description: |

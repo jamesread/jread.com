@@ -1,10 +1,30 @@
 {{ define "main" }}
 
-<aside class="currentPage">You are viewing: <strong class="tag">{{ .Title }}</strong></aside><br />
+{{ $pages := .Pages }}
+{{ $showProjectCards := and (gt (len $pages) 0) (eq (index $pages 0).Section "projects") }}
+
+{{ if $showProjectCards }}
+<style>
+h2 { margin-bottom: .5em; }
+article.project { display: flex; flex-direction: row; }
+article.project div:first-child { flex-grow: 1; }
+div.logo-container { text-align: center; flex-grow: 0; flex-shrink: 0; margin-left: 1em; }
+img.logo { width: 6em; vertical-align: top; box-shadow: none !important; }
+</style>
+{{ end }}
+
+<aside class="currentPage">You are viewing projects with: 
+	<ul class = "tags" style = "display: inline-block;">
+	<span class = "annotation">
+		<span class = "annotation-key">{{ .Section }}</span><span class = "annotation-value">{{ .Title }}</span>
+	</span>
+	</ul>
+	You can also see <a href="{{ printf "/%s/" .Section | relLangURL }}">all projects by <span class = "">{{ .Section }}</span></a> if you like.
+</aside>
+<br />
 
 <section>
-	{{ $pages := .Pages }}
-	{{ if and (gt (len $pages) 0) (eq (index $pages 0).Section "projects") }}
+	{{ if $showProjectCards }}
 		{{ range $pages }}
 			{{ partial "project-card.html" . }}
 		{{ end }}

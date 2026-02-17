@@ -1,7 +1,11 @@
 ---
 title: PowerRunner
+involvement: Founder
 ai_usage: "Level 0: No AI"
-types: [Games]
-stack: [Web]
+technologies:
+  - phaser
+maturity: sandbox
+types: "Games"
+technologies: [Web]
 repo: jamesread/PowerRunner
 ---

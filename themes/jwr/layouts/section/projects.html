@@ -27,14 +27,6 @@ article div:first-child { flex-grow: 1; }
 	</ul>
 	<p><a href="{{ "/types/" | relLangURL }}">All types</a></p>
 
-	<h3>Browse by technical stack</h3>
-	<ul>
-		{{ range .Site.Taxonomies.stack }}
-		<li><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a> ({{ len .Pages }} {{ if eq (len .Pages) 1 }}project{{ else }}projects{{ end }})</li>
-		{{ end }}
-	</ul>
-	<p><a href="{{ "/stack/" | relLangURL }}">All stacks</a></p>
-
 	<h3>Browse by AI Usage</h3>
 	<p>If you're wondering what these levels are, see <a href = "https://blog.jread.com/posts/ai-levels-of-autonomy-in-software-engineering/">my blog post about levels of AI autonomy</a>.</p>
 	<ul>
@@ -54,5 +46,31 @@ article div:first-child { flex-grow: 1; }
 	{{ end }}
 </section>
 {{ end }}
+
+<section class="taxonomy-section">
+	<h3>Browse by technologies used</h3>
+	<ul>
+		{{ range .Site.Taxonomies.technologies }}
+		<li><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a> ({{ len .Pages }} {{ if eq (len .Pages) 1 }}project{{ else }}projects{{ end }})</li>
+		{{ end }}
+	</ul>
+	<p><a href="{{ "/stack/" | relLangURL }}">All technologies</a></p>
+
+	<h3>Browse by maturity level</h3>
+	<ul>
+		{{ range .Site.Taxonomies.maturity }}
+		<li><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a> ({{ len .Pages }} {{ if eq (len .Pages) 1 }}project{{ else }}projects{{ end }})</li>
+		{{ end }}
+	</ul>
+	<p><a href="{{ "/maturity/" | relLangURL }}">All maturity levels</a></p>
+
+	<h3>Browse by involvement</h3>
+	<ul>
+		{{ range .Site.Taxonomies.involvement }}
+		<li><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a> ({{ len .Pages }} {{ if eq (len .Pages) 1 }}project{{ else }}projects{{ end }})</li>
+		{{ end }}
+	</ul>
+	<p><a href="{{ "/involvement/" | relLangURL }}">All involvement</a></p>
+</section>
 
 {{ end }}

@@ -2,14 +2,14 @@
 title: uncomplicated-alert-receiver
 ai_usage: "Level 0: No AI"
 featured: true
-types: ["Infrastructure & DevOps"]
-stack: [REST API]
+types: "Infrastructure & DevOps"
+technologies: [REST API]
 repo: jamesread/uncomplicated-alert-receiver
 tags: [Golang, REST API]
+maturity: Production
+involvement: Founder
 annotations:
-  Maturity: Production
   Stars: 75+
-  Involvement: Founder
   Started: "2024"
   AI: None
 description: |

@@ -1,14 +1,15 @@
 ---
 title: technowax.net
-types: [Community]
-stack: [LAMP]
+types: "Community"
+technologies: [PHP, MySQL, Apache]
 repo: jamesread/technowax
 logo: https://raw.githubusercontent.com/jamesread/technowax/main/frontend/src/resources/images/logo.png
+ai_usage: "Level 0: No AI"
 tags: [PHP, LAMP Stack]
+maturity: Production
+involvement: Founder
 annotations:
-  Maturity: Production
   "Page Hits": 1k+/month
-  Involvement: Founder
   Started: "~2010"
   AI: None
 description: |

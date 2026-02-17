@@ -1,15 +1,14 @@
 ---
 title: Faridoon
 ai_usage: "Level 0: No AI"
-types: [Social]
-stack: [LAMP]
+types: "Social"
+technologies: [PHP]
 repo: jamesread/Faridoon
-tags: [Production, LAMP Stack]
+maturity: Production
+involvement: Founder
 annotations:
-  Maturity: Production
   Stars: 40+
   Users: "~10"
-  Involvement: Founder
   AI: None
 description: |
   Publish your favourite chat quotes.

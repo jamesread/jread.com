@@ -4,12 +4,30 @@
 		<h2><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
 
 		<ul class="no-bullets tags">
+			{{ with $p.Param "maturity" }}
+				{{ $termPage := $p.Site.GetPage (printf "/maturity/%s" ( . | urlize )) }}
+				<li>
+					<span class="annotation">
+						<a class = "annotation-key" href = "/maturity">Maturity</a><a class = "annotation-value" href="{{ $termPage.RelPermalink }}">{{ $termPage.LinkTitle }}</a>
+					</span>
+				</li>
+			{{ end }}
+			{{ with $p.Param "involvement" }}
+				{{ $termPage := $p.Site.GetPage (printf "/involvement/%s" ( . | urlize )) }}
+				<li>
+					<span class="annotation">
+						<a class = "annotation-key" href = "/involvement">Involvement</a><a class = "annotation-value" href="{{ $termPage.RelPermalink }}">{{ $termPage.LinkTitle }}</a>
+					</span>
+				</li>
+			{{ end }}
 			{{ range $k, $v := $p.Param "annotations" }}
+				{{ if and (ne $k "Maturity") (ne $k "maturity") (ne $k "Involvement") (ne $k "involvement") }}
 				<li><span class="annotation"><span class="annotation-key">{{ $k }}</span><span class="annotation-value">{{ $v }}</span></span></li>
+				{{ end }}
 			{{ end }}
 
 			{{ range $p.Param "tags" }}
-			<li><a href="">{{ . }}</a></li>
+			<li><a class = "tag" href="">{{ . }}</a></li>
 			{{ end }}
 		</ul>
 
