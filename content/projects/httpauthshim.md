@@ -2,8 +2,9 @@
 title: httpauthshim
 ai_usage: "Level 0: No AI"
 types: "Libraries & Developer tools"
+logo: https://github.com/jamesread/httpauthshim/raw/main/logo.svg
 technologies: [Go]
-repo: jamesread/golure
+repo: jamesread/httpauthshim
 maturity: Sandbox
 involvement: Founder
 annotations:

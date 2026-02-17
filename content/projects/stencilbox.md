@@ -2,6 +2,7 @@
 title: StencilBox
 ai_usage: "Level 1: Assistant"
 types: "Infrastructure & DevOps"
+logo: https://github.com/jamesread/StencilBox/raw/main/logo.png
 technologies: [Web app]
 repo: jamesread/StencilBox
 tags: [Golang]

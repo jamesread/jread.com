@@ -48,10 +48,10 @@
 	</div>
 	<div class="logo-container">
 		{{ $logo := $p.Param "logo" }}
-		{{ if not $logo }}
-			{{ $logo = printf "https://raw.githubusercontent.com/%s/refs/heads/main/logo.png" ($p.Param "repo") }}
-		{{ end }}
-
+		{{ if $logo }}
 		<img src="{{ $logo }}" alt="{{ $p.Title }} logo" class="logo" />
+		{{ else }}
+		<span class="logo logo-placeholder" aria-hidden="true">no icon</span>
+		{{ end }}
 	</div>
 </article>

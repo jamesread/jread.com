@@ -5,6 +5,7 @@ featured: true
 types: "Infrastructure & DevOps"
 technologies: [REST API]
 repo: jamesread/uncomplicated-alert-receiver
+logo: https://github.com/jamesread/uncomplicated-alert-receiver/raw/main/logo.png
 tags: [Golang, REST API]
 maturity: Production
 involvement: Founder

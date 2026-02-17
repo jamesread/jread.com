@@ -1,5 +1,5 @@
 ---
-title: worlde-solver
+title: wordle-solver
 ai_usage: "Level 0: No AI"
 technologies: [Python, CherryPy]
 maturity: Production

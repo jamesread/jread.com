@@ -2,7 +2,7 @@
 title: SickRock
 featured: true
 ai_usage: "Level 3: Semi-Autonomous Engineer"
-types: "Personal productivity"
+types: "Infrastructure & DevOps"
 technologies: [Web app]
 repo: jamesread/SickRock
 logo: https://raw.githubusercontent.com/jamesread/SickRock/main/frontend/src/resources/images/logo.png

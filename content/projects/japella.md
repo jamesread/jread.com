@@ -2,6 +2,7 @@
 title: Japella
 ai_usage: "Level 3: Semi-Autonomous Engineer"
 types: "Social"
+logo: https://github.com/jamesread/Japella/raw/main/logo.png
 technologies: [GoConnSpa]
 repo: jamesread/Japella
 tags: [Sandbox, GoConnSpa Stack]

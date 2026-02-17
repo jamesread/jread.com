@@ -1,12 +1,13 @@
 ---
 title: Sicroc
-types: "Personal productivity"
+types: "Infrastructure & DevOps"
 ai_usage: "Level 0: No AI"
 technologies: [LAMP]
 repo: jamesread/Sicroc
 tags: [LAMP Stack]
 maturity: Beta
 involvement: Founder
+logo: https://raw.githubusercontent.com/jamesread/SickRock/main/frontend/src/resources/images/logo.png
 annotations:
   Started: "~2007"
 description: |

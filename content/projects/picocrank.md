@@ -2,6 +2,7 @@
 title: PicoCrank
 maturity: Production
 involvement: Founder
+logo: https://github.com/jamesread/picocrank/raw/main/logo.png
 technologies:
   - Vue
   - Vite

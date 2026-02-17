@@ -2,8 +2,8 @@
 title: technowax.net
 types: "Community"
 technologies: [PHP, MySQL, Apache]
-repo: jamesread/technowax
-logo: https://raw.githubusercontent.com/jamesread/technowax/main/frontend/src/resources/images/logo.png
+repo: jamesread/technowax.net
+logo: https://raw.githubusercontent.com/jamesread/technowax.net/refs/heads/main/src/public_html/resources/images/technowaxSmall.png
 ai_usage: "Level 0: No AI"
 tags: [PHP, LAMP Stack]
 maturity: Production
