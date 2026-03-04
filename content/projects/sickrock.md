@@ -10,6 +10,7 @@ tags: [Golang]
 featured: true
 maturity: Alpha
 involvement: Founder
+ordinal: 5
 annotations:
   Started: "2025"
   AI: Vibecoded

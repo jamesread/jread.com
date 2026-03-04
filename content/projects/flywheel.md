@@ -12,6 +12,7 @@ tags:
 repo: jamesread/flywheel
 maturity: Sandbox
 involvement: Founder
+ai_usage: "Level 4: Fully Autonomous Engineer"
 annotations:
   Started: "2025"
 description: |

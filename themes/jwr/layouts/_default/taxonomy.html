@@ -2,6 +2,10 @@
 
 {{ $pages := .Pages }}
 {{ $showProjectCards := and (gt (len $pages) 0) (eq (index $pages 0).Section "projects") }}
+{{ $withOrdinal := where $pages ".Params.ordinal" "!=" nil }}
+{{ $withoutOrdinal := where $pages ".Params.ordinal" "==" nil }}
+{{ $sortedWithOrdinal := sort $withOrdinal "Params.ordinal" "desc" }}
+{{ $sortedByTitle := sort $withoutOrdinal "Title" "asc" }}
 
 {{ if $showProjectCards }}
 <style>
@@ -26,11 +30,17 @@ img.logo { width: 6em; vertical-align: top; box-shadow: none !important; }
 
 <section>
 	{{ if $showProjectCards }}
-		{{ range $pages }}
+		{{ range $sortedWithOrdinal }}
+			{{ partial "project-card.html" . }}
+		{{ end }}
+		{{ range $sortedByTitle }}
 			{{ partial "project-card.html" . }}
 		{{ end }}
 	{{ else }}
-		{{ range $pages }}
+		{{ range $sortedWithOrdinal }}
+			{{ partial "post-summary.html" . }}
+		{{ end }}
+		{{ range $sortedByTitle }}
 			{{ partial "post-summary.html" . }}
 		{{ end }}
 	{{ end }}

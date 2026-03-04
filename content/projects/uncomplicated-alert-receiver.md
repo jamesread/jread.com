@@ -9,6 +9,7 @@ logo: https://github.com/jamesread/uncomplicated-alert-receiver/raw/main/logo.pn
 tags: [Golang, REST API]
 maturity: Production
 involvement: Founder
+ordinal: 3
 annotations:
   Stars: 75+
   Started: "2024"

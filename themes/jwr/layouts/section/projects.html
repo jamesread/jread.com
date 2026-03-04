@@ -39,10 +39,17 @@ article div:first-child { flex-grow: 1; }
 </section>
 
 {{ $featured := where .Pages ".Params.featured" true }}
+{{ $featuredWithOrdinal := where $featured ".Params.ordinal" "!=" nil }}
+{{ $featuredWithoutOrdinal := where $featured ".Params.ordinal" "==" nil }}
+{{ $featuredSortedWithOrdinal := sort $featuredWithOrdinal "Params.ordinal" "desc" }}
+{{ $featuredSortedByTitle := sort $featuredWithoutOrdinal "Title" "asc" }}
 {{ if $featured }}
 <section class="taxonomy-section">
 	<h2>Featured projects</h2>
-	{{ range $featured }}
+	{{ range $featuredSortedWithOrdinal }}
+		{{ partial "project-card.html" . }}
+	{{ end }}
+	{{ range $featuredSortedByTitle }}
 		{{ partial "project-card.html" . }}
 	{{ end }}
 </section>

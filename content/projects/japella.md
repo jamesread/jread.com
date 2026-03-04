@@ -9,6 +9,7 @@ tags: [Sandbox, GoConnSpa Stack]
 featured: true
 maturity: Sandbox
 involvement: Founder
+ordinal: 6
 annotations:
   Started: "2023"
 description: |

@@ -2,7 +2,7 @@
 title: OliveTin
 types: "Infrastructure & DevOps"
 technologies: [Web app]
-ai_usage: "Level 1: Assistant (Code Review)"
+ai_usage: "Level 1: Assistant"
 featured: true
 repo: OliveTin/OliveTin
 logo: https://raw.githubusercontent.com/OliveTin/OliveTin/refs/heads/main/frontend/OliveTinLogo.png
@@ -10,6 +10,7 @@ docs: https://docs.olivetin.app
 tags: [Golang, ConnectRPC, Vue]
 maturity: Production
 involvement: Founder
+ordinal: 10
 annotations:
   Stars: 3.4k+
   Users: 1000+
