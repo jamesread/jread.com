@@ -1,7 +1,7 @@
 ---
 title: SickRock
 featured: true
-ai_usage: "Level 3: Semi-Autonomous Engineer"
+ai_usage: "Level 4: Fully Autonomous Engineer"
 types: "Infrastructure & DevOps"
 technologies: [Web app]
 repo: jamesread/SickRock
@@ -13,7 +13,6 @@ involvement: Founder
 ordinal: 5
 annotations:
   Started: "2025"
-  AI: Vibecoded
 description: |
   Build nocode data based webapps on real databases.
 

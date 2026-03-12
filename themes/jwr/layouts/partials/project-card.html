@@ -20,6 +20,15 @@
 					</span>
 				</li>
 			{{ end }}
+			{{ with $p.Param "ai_usage" }}
+				{{ $aiUsageVal := cond (reflect.IsSlice .) (index . 0) . }}
+				{{ $termPage := $p.Site.GetPage (printf "/ai_usage/%s" ( $aiUsageVal | urlize )) }}
+				<li>
+					<span class="annotation">
+						<a class = "annotation-key" href = "/ai_usage">AI usage</a>{{ if and $termPage $termPage.LinkTitle }}<a class = "annotation-value" href="{{ $termPage.RelPermalink }}">{{ $termPage.LinkTitle }}</a>{{ else }}<span class = "annotation-value">{{ $aiUsageVal }}</span>{{ end }}
+					</span>
+				</li>
+			{{ end }}
 			{{ range $k, $v := $p.Param "annotations" }}
 				{{ if and (ne $k "Maturity") (ne $k "maturity") (ne $k "Involvement") (ne $k "involvement") }}
 				<li><span class="annotation"><span class="annotation-key">{{ $k }}</span><span class="annotation-value">{{ $v }}</span></span></li>

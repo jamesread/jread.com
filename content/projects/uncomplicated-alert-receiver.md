@@ -13,7 +13,6 @@ ordinal: 3
 annotations:
   Stars: 75+
   Started: "2024"
-  AI: None
 description: |
   Show Prometheus Alertmanager alerts on heads up displays.
 ---
