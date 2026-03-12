@@ -11,7 +11,6 @@ involvement: Founder
 annotations:
   "Page Hits": 2k+/month
   Started: "~2011"
-  AI: None
 description: |
   A list of LAN parties and events around the world.
 ---

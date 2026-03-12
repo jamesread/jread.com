@@ -11,7 +11,6 @@ involvement: Founder
 annotations:
   "Page Hits": 1k+/month
   Started: "~2010"
-  AI: None
 description: |
   A community for people interested in all forms of modern technology.
 ---

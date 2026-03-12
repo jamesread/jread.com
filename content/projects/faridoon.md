@@ -9,7 +9,6 @@ involvement: Founder
 annotations:
   Stars: 40+
   Users: "~10"
-  AI: None
 description: |
   Publish your favourite chat quotes.
 ---
