@@ -1,0 +1,34 @@
+{{/*
+	Thumbnail strip with lightbox (full-size + caption). Context: . is the project Page.
+	Used on project list/taxonomy cards and project detail pages.
+*/}}
+{{ $p := . }}
+{{ $shots := partial "get-project-screenshots.html" $p }}
+{{ if gt (len $shots) 0 }}
+<div class="project-screenshot-previews">
+	{{ range $i, $item := $shots }}
+	{{ $r := index $item "resource" }}
+	{{ $caption := index $item "description" }}
+	{{ $alt := cond (ne $caption "") $caption (printf "%s screenshot %d" $p.Title (add $i 1)) }}
+	{{ $thumb := $r.Resize "x80" }}
+	<a
+		href="{{ $r.RelPermalink }}"
+		class="project-screenshot-previews__link"
+		data-screenshot-lightbox="{{ $r.RelPermalink }}"
+		data-screenshot-alt="{{ $alt }}"
+		{{ with $caption }}data-screenshot-caption="{{ . }}"{{ end }}
+		aria-label="{{ $alt }}, enlarge"
+	>
+		<img
+			src="{{ $thumb.RelPermalink }}"
+			width="{{ $thumb.Width }}"
+			height="{{ $thumb.Height }}"
+			alt=""
+			class="project-screenshot-previews__thumb"
+			loading="lazy"
+			decoding="async"
+		/>
+	</a>
+	{{ end }}
+</div>
+{{ end }}

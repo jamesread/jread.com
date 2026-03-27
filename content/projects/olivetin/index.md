@@ -11,6 +11,13 @@ tags: [Golang, ConnectRPC, Vue]
 maturity: Production
 involvement: Founder
 ordinal: 10
+screenshots:
+  - file: mainpage-darkop.png
+    description: "Dark mode on the main page"
+
+  - file: mainpage-phone.png
+    description: "Main page on a phone"
+
 annotations:
   Stars: 3.4k+
   Users: 1000+

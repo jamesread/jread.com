@@ -1,0 +1,30 @@
+{{/*
+	Returns a slice of maps: resource (page image resource), description (caption string, may be empty).
+	Frontmatter screenshots may list filenames (strings) or objects:
+	  - file: path/to.png   # required for objects; image is an alias
+	  - description: "Visible caption below the image"
+*/}}
+{{ $p := . }}
+{{ $shots := slice }}
+{{ if $p.Param "screenshots" }}
+	{{ range $p.Param "screenshots" }}
+		{{ $path := "" }}
+		{{ $desc := "" }}
+		{{ if reflect.IsMap . }}
+			{{ $path = index . "file" | default (index . "image") }}
+			{{ $desc = index . "description" | default "" }}
+		{{ else }}
+			{{ $path = . }}
+		{{ end }}
+		{{ if $path }}
+			{{ with $p.Resources.GetMatch $path }}
+				{{ $shots = $shots | append (dict "resource" . "description" $desc) }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+{{ else }}
+	{{ range sort ($p.Resources.Match "screenshots/*") "Name" }}
+		{{ $shots = $shots | append (dict "resource" . "description" "") }}
+	{{ end }}
+{{ end }}
+{{ return $shots }}

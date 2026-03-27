@@ -1,4 +1,9 @@
 {{ $p := . }}
+{{ $showScreenshotPreviews := false }}
+{{ if reflect.IsMap . }}
+	{{ $p = index . "Page" }}
+	{{ if eq (index . "showScreenshotPreviews") true }}{{ $showScreenshotPreviews = true }}{{ end }}
+{{ end }}
 <article class="project">
 	<div>
 		<h2><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
@@ -54,6 +59,10 @@
 			{{ range $p.Param "links" }}
 			{{ end }}
 		</ul>
+
+		{{ if $showScreenshotPreviews }}
+			{{ partial "project-screenshot-previews.html" $p }}
+		{{ end }}
 	</div>
 	<div class="logo-container">
 		{{ $logo := $p.Param "logo" }}

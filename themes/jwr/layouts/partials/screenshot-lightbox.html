@@ -1,0 +1,154 @@
+<dialog class="screenshot-lightbox" id="screenshot-lightbox" aria-label="Screenshot">
+	<div class="screenshot-lightbox__frame">
+		<button type="button" class="screenshot-lightbox__close" aria-label="Close">&times;</button>
+		<button type="button" class="screenshot-lightbox__nav screenshot-lightbox__nav--prev" aria-label="Previous screenshot" hidden>‹</button>
+		<button type="button" class="screenshot-lightbox__nav screenshot-lightbox__nav--next" aria-label="Next screenshot" hidden>›</button>
+		<figure class="screenshot-lightbox__figure">
+			<img class="screenshot-lightbox__img" alt="" decoding="async" />
+			<figcaption class="screenshot-lightbox__caption" hidden></figcaption>
+		</figure>
+	</div>
+</dialog>
+<script>
+(function () {
+	var dlg = document.getElementById("screenshot-lightbox");
+	if (!dlg || typeof dlg.showModal !== "function") return;
+	var img = dlg.querySelector(".screenshot-lightbox__img");
+	var caption = dlg.querySelector(".screenshot-lightbox__caption");
+	var frame = dlg.querySelector(".screenshot-lightbox__frame");
+	var closeBtn = dlg.querySelector(".screenshot-lightbox__close");
+	var prevBtn = dlg.querySelector(".screenshot-lightbox__nav--prev");
+	var nextBtn = dlg.querySelector(".screenshot-lightbox__nav--next");
+	if (!img || !frame || !closeBtn) return;
+
+	var lastTrigger = null;
+	var groupEls = [];
+	var currentIndex = 0;
+
+	function triggersInGroup(el) {
+		var root = el.closest(".project-screenshot-previews");
+		if (!root) {
+			return [el];
+		}
+		return Array.prototype.slice.call(root.querySelectorAll("[data-screenshot-lightbox]"));
+	}
+
+	function applySlide(el) {
+		var src = el.getAttribute("data-screenshot-lightbox") || el.getAttribute("href");
+		if (!src) return;
+		lastTrigger = el;
+		img.src = src;
+		img.alt = el.getAttribute("data-screenshot-alt") || "";
+		if (caption) {
+			var cap = el.getAttribute("data-screenshot-caption");
+			if (cap) {
+				caption.textContent = cap;
+				caption.removeAttribute("hidden");
+			} else {
+				caption.textContent = "";
+				caption.setAttribute("hidden", "");
+			}
+		}
+		var n = groupEls.length;
+		if (n > 1) {
+			dlg.setAttribute("aria-label", "Screenshot " + (currentIndex + 1) + " of " + n);
+		} else {
+			dlg.setAttribute("aria-label", "Screenshot");
+		}
+	}
+
+	function updateNavButtons() {
+		var multi = groupEls.length > 1;
+		if (prevBtn) {
+			if (multi) prevBtn.removeAttribute("hidden");
+			else prevBtn.setAttribute("hidden", "");
+		}
+		if (nextBtn) {
+			if (multi) nextBtn.removeAttribute("hidden");
+			else nextBtn.setAttribute("hidden", "");
+		}
+	}
+
+	function step(dir) {
+		if (groupEls.length <= 1) return;
+		var n = groupEls.length;
+		currentIndex = (currentIndex + dir + n) % n;
+		applySlide(groupEls[currentIndex]);
+	}
+
+	function openFromTrigger(el) {
+		var src = el.getAttribute("data-screenshot-lightbox") || el.getAttribute("href");
+		if (!src) return;
+		groupEls = triggersInGroup(el);
+		currentIndex = groupEls.indexOf(el);
+		if (currentIndex < 0) {
+			groupEls = [el];
+			currentIndex = 0;
+		}
+		updateNavButtons();
+		applySlide(groupEls[currentIndex]);
+		dlg.showModal();
+	}
+
+	document.addEventListener("click", function (e) {
+		var t = e.target.closest("[data-screenshot-lightbox]");
+		if (!t) return;
+		e.preventDefault();
+		openFromTrigger(t);
+	});
+
+	closeBtn.addEventListener("click", function () {
+		dlg.close();
+	});
+
+	if (prevBtn) {
+		prevBtn.addEventListener("click", function (e) {
+			e.stopPropagation();
+			step(-1);
+		});
+	}
+	if (nextBtn) {
+		nextBtn.addEventListener("click", function (e) {
+			e.stopPropagation();
+			step(1);
+		});
+	}
+
+	dlg.addEventListener("keydown", function (e) {
+		if (!dlg.open) return;
+		if (e.key === "ArrowLeft") {
+			e.preventDefault();
+			step(-1);
+		} else if (e.key === "ArrowRight") {
+			e.preventDefault();
+			step(1);
+		}
+	});
+
+	dlg.addEventListener("click", function (e) {
+		if (e.target === dlg) dlg.close();
+	});
+
+	frame.addEventListener("click", function (e) {
+		if (e.target === frame) dlg.close();
+	});
+
+	dlg.addEventListener("close", function () {
+		img.removeAttribute("src");
+		img.alt = "";
+		if (caption) {
+			caption.textContent = "";
+			caption.setAttribute("hidden", "");
+		}
+		dlg.setAttribute("aria-label", "Screenshot");
+		groupEls = [];
+		currentIndex = 0;
+		if (prevBtn) prevBtn.setAttribute("hidden", "");
+		if (nextBtn) nextBtn.setAttribute("hidden", "");
+		if (lastTrigger && typeof lastTrigger.focus === "function") {
+			lastTrigger.focus();
+		}
+		lastTrigger = null;
+	});
+})();
+</script>

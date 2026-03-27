@@ -47,10 +47,10 @@ article div:first-child { flex-grow: 1; }
 <section class="taxonomy-section">
 	<h2>Featured projects</h2>
 	{{ range $featuredSortedWithOrdinal }}
-		{{ partial "project-card.html" . }}
+		{{ partial "project-card.html" (dict "Page" . "showScreenshotPreviews" true) }}
 	{{ end }}
 	{{ range $featuredSortedByTitle }}
-		{{ partial "project-card.html" . }}
+		{{ partial "project-card.html" (dict "Page" . "showScreenshotPreviews" true) }}
 	{{ end }}
 </section>
 {{ end }}

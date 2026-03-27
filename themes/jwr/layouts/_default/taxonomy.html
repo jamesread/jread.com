@@ -31,10 +31,10 @@ img.logo { width: 6em; vertical-align: top; box-shadow: none !important; }
 <section>
 	{{ if $showProjectCards }}
 		{{ range $sortedWithOrdinal }}
-			{{ partial "project-card.html" . }}
+			{{ partial "project-card.html" (dict "Page" . "showScreenshotPreviews" true) }}
 		{{ end }}
 		{{ range $sortedByTitle }}
-			{{ partial "project-card.html" . }}
+			{{ partial "project-card.html" (dict "Page" . "showScreenshotPreviews" true) }}
 		{{ end }}
 	{{ else }}
 		{{ range $sortedWithOrdinal }}
