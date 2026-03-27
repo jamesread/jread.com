@@ -218,25 +218,52 @@ ul.tags li {
 
 .tag {
   font-family: sans;
-  padding: .5em;
-  margin-right: .5em;
-  background-color: #36f;
-  color: white;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  padding: 0.28em 0.65em;
+  margin-right: 0.5em;
+  line-height: 1.35;
+  font-weight: 500;
+  font-size: 0.9em;
+  letter-spacing: 0.02em;
   text-decoration: none;
-  border-radius: .8em;
+  border-radius: 6px;
+  border: 1px solid #c8d0d8;
+  background: #f8f9fb;
+  color: #1d4ed8;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
 }
 
-ul.tags li a:hover {
-  background-color: #00458F;
+a.tag {
+  font-weight: 700;
 }
 
-ul.tags a:active, ul.tags a:focus, strong.tag {
-  background-color: black;
+a.tag:hover {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  text-decoration: none;
+}
+
+a.tag:active,
+a.tag:focus {
+  background-color: #dbeafe;
+  color: #1e3a8a;
+  border-color: #60a5fa;
+  text-decoration: none;
+}
+
+strong.tag {
+  font-weight: 700;
+  background: #eef2ff;
+  color: #3730a3;
+  border-color: #c7d2fe;
 }
 
 ul.terms {
   list-style: none;
   padding: 0;
+  font-size: small;
 }
 
 ul.terms li {
@@ -245,10 +272,6 @@ ul.terms li {
 
 aside.currentPage {
   padding-top: 1em;
-}
-
-aside.currentPage .tag {
-  font-size: small;
 }
 
 ul.pagination {
@@ -260,29 +283,79 @@ ul.pagination li {
 }
 
 .annotation {
-	display: block;
+  display: inline-flex;
+  align-items: stretch;
+  vertical-align: middle;
+  max-width: 100%;
+  margin-right: 0.5em;
+  font-size: small;
+  line-height: 1.35;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #c8d0d8;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
 }
 
-.annotation span, .annotation a {
-	font-family: sans;
-	padding: .5em;
+.annotation span,
+.annotation a {
+  font-family: sans;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28em 0.6em;
+  text-decoration: none;
 }
 
 .annotation-key {
-  font-weight: bold;
-  background-color: #58f;
-  color: white;
-  border-top-left-radius: .8em;
-  border-bottom-left-radius: .8em;
+  font-weight: 600;
+  font-size: 0.72em;
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+  background: #eef1f5;
+  color: #4a5568;
+  border-right: 1px solid #d0d7e0;
+}
+
+.annotation a.annotation-key {
+  color: #3d4f63;
+}
+
+.annotation a.annotation-key:hover {
+  background: #e4e9ef;
+  text-decoration: none;
+}
+
+.annotation a.annotation-key:active,
+.annotation a.annotation-key:focus {
+  background-color: #d8dee6;
+  color: #2d3748;
+  text-decoration: none;
 }
 
 .annotation-value {
-  font-weight: bold;
-  background-color: #36f;
-  color: white;
-  border-top-right-radius: .8em;
-  border-bottom-right-radius: .8em;
-  margin-right: .5em;
+  font-weight: 500;
+  font-size: 0.9em;
+  letter-spacing: 0.02em;
+  background: #f8f9fb;
+  color: #1e293b;
+  margin-right: 0;
+}
+
+.annotation a.annotation-value {
+  font-weight: 700;
+  color: #1d4ed8;
+}
+
+.annotation a.annotation-value:hover {
+  background: #eff6ff;
+  text-decoration: none;
+}
+
+.annotation a.annotation-value:active,
+.annotation a.annotation-value:focus {
+  background-color: #dbeafe;
+  color: #1e3a8a;
+  text-decoration: none;
 }
 
 figure img {
@@ -311,15 +384,20 @@ img.profile {
   gap: 0.5em;
   margin-top: 1em;
   align-items: center;
+  padding: 0.65em 0.75em;
+  border: 1px solid #e6eaee;
+  border-radius: 6px;
+  background: #f7f8fa;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
 .project-screenshot-previews__link {
   display: block;
   line-height: 0;
-  border: 1px solid #dee3e7;
+  border: 1px solid #dce1e6;
   border-radius: 4px;
   overflow: hidden;
-  background: #f8f9fa;
+  background: #fff;
   cursor: zoom-in;
 }
 
@@ -342,6 +420,7 @@ img.profile {
   margin: 0;
   vertical-align: middle;
   object-fit: contain;
+  box-shadow: none;
 }
 
 /* Screenshot lightbox (<dialog> + partials/screenshot-lightbox.html) */
