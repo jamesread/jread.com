@@ -13,6 +13,9 @@ taxonomies:
 copyright: 'James Read'
 
 params:
+  description: >-
+    James Read — open source developer, blogger (Code, Containers and Cloud), and Red Hatter.
+    Projects, writing, and contact links.
   author:
     email: contact@jread.com
     name: 'James Read'
