@@ -38,7 +38,7 @@ header div:first-child {
 }
 
 header h1 a {
-  font-weight: lighter;
+  font-weight: normal;
 }
 
 nav {
@@ -54,6 +54,7 @@ nav ul {
 
 nav ul li {
   display: inline-block;
+  vertical-align: top;
   margin-right: 1em;
   text-align: center;
 }
@@ -65,6 +66,14 @@ nav ul li a {
 
 nav ul li a:hover {
   text-decoration: underline;
+}
+
+nav ul li .nav-indicator {
+  display: block;
+  height: 0.78em;
+  margin-top: 0.15em;
+  line-height: 0;
+  color: black;
 }
 
 nav ul li.last {
@@ -175,6 +184,10 @@ article img {
   margin: 2em auto 2em auto;
   display: block;
   max-width: 100%;
+}
+
+article.project img {
+  margin: 0;
 }
 
 aside.featuredImageCredit {
@@ -375,6 +388,7 @@ img.profile {
   width: 2em;
   height: 2em;
   border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.18);
 }
 
 /* Project screenshots: thumbnails + lightbox (partials/project-screenshot-previews.html) */
@@ -553,3 +567,84 @@ img.profile {
   display: none !important;
 }
 
+
+.project-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25em;
+  margin-top: 1em;
+}
+
+.project-links ul {
+  list-style: none;
+  display: flex;
+  gap: 1.25em;
+  margin: 0;
+  padding: 0;
+}
+
+.project-links li {
+  display: flex;
+  margin: 0;
+}
+
+.project-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+
+.project-links svg {
+  font-size: 1.5em;
+}
+
+/* "Explore related projects" promo (partials/project-explore.html) */
+.project-explore {
+  margin-top: 2em;
+  padding: 0.75em 1.25em;
+  border: 1px solid #e6eaee;
+  border-radius: 6px;
+  background: #f7f8fa;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.project-explore h2 {
+  margin-top: 0.25em;
+}
+
+.project-explore__list {
+  list-style: none;
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+
+.project-explore__list li {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1.5em;
+}
+
+.project-explore__list p {
+  display: inline;
+}
+
+.project-explore img.project-explore__logo,
+.project-explore .logo-placeholder.project-explore__logo {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 3rem;
+  height: 3rem;
+  min-height: 0;
+  margin: 0;
+  object-fit: contain;
+  box-shadow: none;
+}
+
+.project-explore .logo-placeholder.project-explore__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.1;
+  font-size: 0.6rem;
+}

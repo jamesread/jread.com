@@ -5,12 +5,11 @@
 	<ul>
 		{{ range .Site.Menus.main }}
 		<li class = "{{ .Params.Class }}">
-			<a href = "{{ .PageRef }}">{{ .Name }}</a>
-			<span class = "indictor">
-				{{if $currentPage.IsMenuCurrent .Menu . }}
-				&#x1F781;
-				{{ else }}
-				&nbsp;
+			{{ $isCurrent := $currentPage.IsMenuCurrent .Menu . }}
+			<a href = "{{ .PageRef }}"{{ if $isCurrent }} aria-current = "page"{{ end }}>{{ .Name }}</a>
+			<span class = "nav-indicator" aria-hidden = "true">
+				{{ if $isCurrent }}
+				<svg xmlns="http://www.w3.org/2000/svg" width="0.78em" height="0.78em" viewBox="0 0 10 10"><path fill="currentColor" d="M5 1 L9 8 H1 Z"/></svg>
 				{{ end }}
 			</span>
 		</li>

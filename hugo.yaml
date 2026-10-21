@@ -1,4 +1,4 @@
-languageCode: 'en-gb'
+locale: 'en-gb'
 title: "James Read's Homepage"
 theme: 'jwr'
 baseURL: 'https://jread.com'

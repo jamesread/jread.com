@@ -5,71 +5,73 @@
 	{{ if eq (index . "showScreenshotPreviews") true }}{{ $showScreenshotPreviews = true }}{{ end }}
 {{ end }}
 <article class="project">
-	<div>
-		<h2><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
+	<header class="project-header">
+		<div>
+			<h2><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
 
-		<ul class="no-bullets tags">
-			{{ with $p.Param "maturity" }}
-				{{ $termPage := $p.Site.GetPage (printf "/maturity/%s" ( . | urlize )) }}
-				<li>
-					<span class="annotation">
-						<a class = "annotation-key" href = "/maturity">Maturity</a><a class = "annotation-value" href="{{ $termPage.RelPermalink }}">{{ $termPage.LinkTitle }}</a>
-					</span>
-				</li>
-			{{ end }}
-			{{ with $p.Param "involvement" }}
-				{{ $termPage := $p.Site.GetPage (printf "/involvement/%s" ( . | urlize )) }}
-				<li>
-					<span class="annotation">
-						<a class = "annotation-key" href = "/involvement">Involvement</a><a class = "annotation-value" href="{{ $termPage.RelPermalink }}">{{ $termPage.LinkTitle }}</a>
-					</span>
-				</li>
-			{{ end }}
-			{{ with $p.Param "ai_usage" }}
-				{{ $aiUsageVal := cond (reflect.IsSlice .) (index . 0) . }}
-				{{ $termPage := $p.Site.GetPage (printf "/ai_usage/%s" ( $aiUsageVal | urlize )) }}
-				<li>
-					<span class="annotation">
-						<a class = "annotation-key" href = "/ai_usage">AI usage</a>{{ if and $termPage $termPage.LinkTitle }}<a class = "annotation-value" href="{{ $termPage.RelPermalink }}">{{ $termPage.LinkTitle }}</a>{{ else }}<span class = "annotation-value">{{ $aiUsageVal }}</span>{{ end }}
-					</span>
-				</li>
-			{{ end }}
-			{{ range $k, $v := $p.Param "annotations" }}
-				{{ if and (ne $k "Maturity") (ne $k "maturity") (ne $k "Involvement") (ne $k "involvement") }}
-				<li><span class="annotation"><span class="annotation-key">{{ $k }}</span><span class="annotation-value">{{ $v }}</span></span></li>
+			<ul class="no-bullets tags">
+				{{ with $p.Param "maturity" }}
+					{{ $termPage := $p.Site.GetPage (printf "/maturity/%s" ( . | urlize )) }}
+					<li>
+						<span class="annotation">
+							<a class = "annotation-key" href = "/maturity">Maturity</a><a class = "annotation-value" href="{{ $termPage.RelPermalink }}">{{ $termPage.LinkTitle }}</a>
+						</span>
+					</li>
 				{{ end }}
-			{{ end }}
+				{{ with $p.Param "involvement" }}
+					{{ $termPage := $p.Site.GetPage (printf "/involvement/%s" ( . | urlize )) }}
+					<li>
+						<span class="annotation">
+							<a class = "annotation-key" href = "/involvement">Involvement</a><a class = "annotation-value" href="{{ $termPage.RelPermalink }}">{{ $termPage.LinkTitle }}</a>
+						</span>
+					</li>
+				{{ end }}
+				{{ with $p.Param "ai_usage" }}
+					{{ $aiUsageVal := cond (reflect.IsSlice .) (index . 0) . }}
+					{{ $termPage := $p.Site.GetPage (printf "/ai_usage/%s" ( $aiUsageVal | urlize )) }}
+					<li>
+						<span class="annotation">
+							<a class = "annotation-key" href = "/ai_usage">AI usage</a>{{ if and $termPage $termPage.LinkTitle }}<a class = "annotation-value" href="{{ $termPage.RelPermalink }}">{{ $termPage.LinkTitle }}</a>{{ else }}<span class = "annotation-value">{{ $aiUsageVal }}</span>{{ end }}
+						</span>
+					</li>
+				{{ end }}
+				{{ range $k, $v := $p.Param "annotations" }}
+					{{ if and (ne $k "Maturity") (ne $k "maturity") (ne $k "Involvement") (ne $k "involvement") }}
+					<li><span class="annotation"><span class="annotation-key">{{ $k }}</span><span class="annotation-value">{{ $v }}</span></span></li>
+					{{ end }}
+				{{ end }}
 
-			{{ range $p.Param "tags" }}
-			<li><a class = "tag" href="">{{ . }}</a></li>
+				{{ range $p.Param "tags" }}
+				<li><a class = "tag" href="">{{ . }}</a></li>
+				{{ end }}
+			</ul>
+		</div>
+		<div class="logo-container">
+			{{ $logo := $p.Param "logo" }}
+			{{ if $logo }}
+			<img src="{{ $logo }}" alt="{{ $p.Title }} logo" class="logo" />
+			{{ else }}
+			<span class="logo logo-placeholder" aria-hidden="true">no icon</span>
 			{{ end }}
-		</ul>
-
+		</div>
+	</header>
+	<div class="project-body">
 		<aside class="mt3">{{ $p.Param "description" | default $p.Content | markdownify }}</aside>
-		<ul>
-			<li><a href="https://github.com/{{ $p.Param "repo" }}">{{ $p.Title }} on GitHub</a></li>
-
-			{{ $docs := $p.Param "docs" }}
-			{{ if not $docs }}
-				{{ $docs = printf "https://jamesread.github.io/%s" $p.Title }}
-			{{ end }}
-
-			<li><a href="{{ $docs }}">{{ $p.Title }} Documentation</a></li>
-
-			{{ range $p.Param "links" }}
-			{{ end }}
-		</ul>
-
 		{{ if $showScreenshotPreviews }}
 			{{ partial "project-screenshot-previews.html" $p }}
 		{{ end }}
-	</div>
-	<div class="logo-container">
-		{{ $logo := $p.Param "logo" }}
-		{{ if $logo }}
-		<img src="{{ $logo }}" alt="{{ $p.Title }} logo" class="logo" />
-		{{ else }}
-		<span class="logo logo-placeholder" aria-hidden="true">no icon</span>
+
+		{{ $docs := $p.Param "docs" }}
+		{{ if not $docs }}
+			{{ $docs = printf "https://jamesread.github.io/%s" $p.Title }}
 		{{ end }}
+
+		<div class="project-links">
+			<span class="project-links__label">{{ $p.Title }} Links:</span>
+			<ul>
+				<li><a href="https://github.com/{{ $p.Param "repo" }}" title="{{ $p.Title }} on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg><span>GitHub</span></a></li>
+				<li><a href="{{ $docs }}" title="{{ $p.Title }} Documentation"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 5c-1.11-.35-2.33-.5-3.5-.5c-1.95 0-4.05.4-5.5 1.5c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5c.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5c1.35-.85 3.8-1.5 5.5-1.5c1.65 0 3.35.3 4.75 1.05c.1.05.15.05.25.05c.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1m0 13.5c-1.1-.35-2.3-.5-3.5-.5c-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5c1.2 0 2.4.15 3.5.5z"/></svg><span>Docs</span></a></li>
+			</ul>
+		</div>
 	</div>
 </article>

@@ -8,12 +8,12 @@ div.logo-container { text-align: center; flex-grow: 0; flex-shrink: 0; margin-le
 img.logo { width: 6em; vertical-align: top; box-shadow: none !important; }
 .logo-placeholder { display: inline-block; width: 6em; min-height: 6em; line-height: 6em; text-align: center; font-size: 0.75rem; color: #999; background: #eee; border: 1px solid #ddd; margin: 1em; }
 img { max-width: 100%; margin: 0; }
-article.project { display: flex; flex-direction: row; }
-article div:first-child { flex-grow: 1; }
+.project-header { display: flex; flex-direction: row; }
+.project-header > div:first-child { flex-grow: 1; }
 </style>
 
-{{ partial "project-card.html" . }}
+{{ partial "project-card.html" (dict "Page" . "showScreenshotPreviews" true) }}
 
-{{ partial "project-screenshot-previews.html" . }}
+{{ partial "project-explore.html" . }}
 
 {{ end }}

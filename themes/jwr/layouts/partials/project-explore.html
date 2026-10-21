@@ -1,0 +1,59 @@
+{{/*
+	"Explore related projects" promo for project detail pages. Context: . is the project Page.
+	Related projects are scored by shared types (x2), technologies and tags.
+*/}}
+{{ $p := . }}
+{{ $types := $p.Params.types | default slice }}
+{{ if not (reflect.IsSlice $types) }}{{ $types = slice $types }}{{ end }}
+{{ $technologies := $p.Params.technologies | default slice }}
+{{ $tags := $p.Params.tags | default slice }}
+
+{{ $scored := slice }}
+{{ range where site.RegularPages "Section" "projects" }}
+	{{ if ne .RelPermalink $p.RelPermalink }}
+		{{ $otherTypes := .Params.types | default slice }}
+		{{ if not (reflect.IsSlice $otherTypes) }}{{ $otherTypes = slice $otherTypes }}{{ end }}
+		{{ $score := mul 2 (len (intersect $types $otherTypes)) }}
+		{{ $score = add $score (len (intersect $technologies (.Params.technologies | default slice))) }}
+		{{ $score = add $score (len (intersect $tags (.Params.tags | default slice))) }}
+		{{ if gt $score 0 }}
+			{{ $scored = $scored | append (dict "score" $score "title" .Title "page" .) }}
+		{{ end }}
+	{{ end }}
+{{ end }}
+{{ $related := first 4 (sort (sort $scored "title" "asc") "score" "desc") }}
+
+<section class="project-explore">
+	<h2>Explore related projects</h2>
+
+	{{ with $related }}
+	<ul class="project-explore__list">
+		{{ range . }}
+		{{ $r := .page }}
+		<li>
+			{{ with $r.Param "logo" }}
+			<img src="{{ . }}" alt="{{ $r.Title }} logo" class="project-explore__logo" />
+			{{ else }}
+			<span class="project-explore__logo logo-placeholder" aria-hidden="true">no icon</span>
+			{{ end }}
+			<div><a href="{{ $r.RelPermalink }}">{{ $r.Title }}</a>{{ with $r.Param "description" }} &mdash; {{ . | markdownify }}{{ end }}</div>
+		</li>
+		{{ end }}
+	</ul>
+	{{ end }}
+
+	<ul class="no-bullets tags">
+		{{ range $types }}
+			{{ with site.GetPage (printf "/types/%s" (. | urlize)) }}
+			<li><span class="annotation"><a class="annotation-key" href="/types">Type</a><a class="annotation-value" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></span></li>
+			{{ end }}
+		{{ end }}
+		{{ range $technologies }}
+			{{ with site.GetPage (printf "/technologies/%s" (. | urlize)) }}
+			<li><span class="annotation"><a class="annotation-key" href="/stack">Technology</a><a class="annotation-value" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></span></li>
+			{{ end }}
+		{{ end }}
+	</ul>
+
+	<p><a href="{{ "/projects/" | relLangURL }}">Browse all projects &rarr;</a></p>
+</section>
