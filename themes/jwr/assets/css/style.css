@@ -1,9 +1,16 @@
+/* Shared hover accent (see "Hover" at the end of this file) */
+:root {
+  --hover-bg: #eff6ff;
+  --hover-border: #93c5fd;
+  --hover-text: #1d4ed8;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   font-size: 1.0em;
-  line-height: 1.5;
+  line-height: 1.65;
   background-color: #fff;
 }
 
@@ -94,7 +101,23 @@ a:hover {
   text-decoration: underline;
 }
 
-a:active, a:focus {
+/* Keyboard focus: one style for every focusable element */
+:focus-visible {
+  outline: 3px solid black;
+  outline-offset: 2px;
+}
+
+/* Zero specificity, so elements that set their own radius keep it */
+:where(:focus-visible) {
+  border-radius: 4px;
+}
+
+/* .annotation clips its children (overflow: hidden), so draw the ring inside */
+.annotation a:focus-visible {
+  outline-offset: -3px;
+}
+
+a:active {
   color: white;
   background-color: black;
   text-decoration: none;
@@ -134,7 +157,6 @@ h2 {
   font-weight: normal;
   margin: 0;
 }
-
 
 h3 {
   font-weight: normal;
@@ -222,7 +244,6 @@ ul.tags {
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: small;
 }
 
 ul.tags li {
@@ -252,14 +273,7 @@ a.tag {
   font-weight: 700;
 }
 
-a.tag:hover {
-  background: #eff6ff;
-  border-color: #93c5fd;
-  text-decoration: none;
-}
-
-a.tag:active,
-a.tag:focus {
+a.tag:active {
   background-color: #dbeafe;
   color: #1e3a8a;
   border-color: #60a5fa;
@@ -276,7 +290,6 @@ strong.tag {
 ul.terms {
   list-style: none;
   padding: 0;
-  font-size: small;
 }
 
 ul.terms li {
@@ -333,13 +346,7 @@ ul.pagination li {
   color: #3d4f63;
 }
 
-.annotation a.annotation-key:hover {
-  background: #e4e9ef;
-  text-decoration: none;
-}
-
-.annotation a.annotation-key:active,
-.annotation a.annotation-key:focus {
+.annotation a.annotation-key:active {
   background-color: #d8dee6;
   color: #2d3748;
   text-decoration: none;
@@ -359,13 +366,7 @@ ul.pagination li {
   color: #1d4ed8;
 }
 
-.annotation a.annotation-value:hover {
-  background: #eff6ff;
-  text-decoration: none;
-}
-
-.annotation a.annotation-value:active,
-.annotation a.annotation-value:focus {
+.annotation a.annotation-value:active {
   background-color: #dbeafe;
   color: #1e3a8a;
   text-decoration: none;
@@ -413,16 +414,6 @@ img.profile {
   overflow: hidden;
   background: #fff;
   cursor: zoom-in;
-}
-
-.project-screenshot-previews__link:hover {
-  border-color: #36f;
-}
-
-.project-screenshot-previews__link:active,
-.project-screenshot-previews__link:focus {
-  outline: 2px solid #36f;
-  outline-offset: 2px;
 }
 
 .project-screenshot-previews__thumb {
@@ -514,15 +505,9 @@ img.profile {
   cursor: pointer;
 }
 
-.screenshot-lightbox__close:hover {
-  background: #f0f0f0;
-}
-
-.screenshot-lightbox__close:active,
-.screenshot-lightbox__close:focus {
+.screenshot-lightbox__close:active {
   color: #fff;
   background: #000;
-  outline: none;
 }
 
 .screenshot-lightbox__nav {
@@ -552,21 +537,14 @@ img.profile {
   right: 0.35rem;
 }
 
-.screenshot-lightbox__nav:hover {
-  background: #f0f0f0;
-}
-
-.screenshot-lightbox__nav:active,
-.screenshot-lightbox__nav:focus {
+.screenshot-lightbox__nav:active {
   color: #fff;
   background: #000;
-  outline: none;
 }
 
 .screenshot-lightbox__nav[hidden] {
   display: none !important;
 }
-
 
 .project-links {
   display: flex;
@@ -647,4 +625,240 @@ img.profile {
   justify-content: center;
   line-height: 1.1;
   font-size: 0.6rem;
+}
+
+/* Dark theme (palette shared with blog.jread.com) */
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #333;
+		color: #fff;
+	}
+
+	:root {
+		--hover-bg: #454545;
+		--hover-border: #60a5fa;
+		--hover-text: #bfdbfe;
+	}
+
+	:focus-visible {
+		outline-color: white;
+	}
+
+	nav ul li .nav-indicator {
+		color: white;
+	}
+
+	hr.page {
+		border-bottom-color: #555;
+	}
+
+	a {
+		color: #83d6ff;
+	}
+
+	a:active {
+		color: black;
+		background-color: white;
+	}
+
+	h1 a,
+	h2 a {
+		color: #fff;
+	}
+
+	article,
+	article header {
+		background-color: transparent;
+	}
+
+	footer aside,
+	aside.featuredImageCredit {
+		color: #aaa;
+	}
+
+	article img {
+		box-shadow: 0 0 5px #222;
+	}
+
+	article ul li::marker, ul.related li::marker {
+		color: #fff;
+	}
+
+	article table {
+		border-color: #555;
+		box-shadow: 0 0 5px #222;
+	}
+
+	article th,
+	article td {
+		border-bottom-color: #555;
+	}
+
+	article th {
+		background-color: #444;
+		color: #eee;
+	}
+
+	article tbody tr:nth-child(even) {
+		background-color: #3a3a3a;
+	}
+
+	article tbody tr:hover {
+		background-color: #454545;
+	}
+
+	code {
+		background-color: #444;
+		color: #eee;
+	}
+
+	pre {
+		background-color: #444;
+		color: #eee;
+		box-shadow: 0 0 5px #222;
+	}
+
+	pre code {
+		background-color: transparent;
+		color: inherit;
+	}
+
+	figcaption {
+		background-color: #444;
+		box-shadow: 0 0 5px #222;
+	}
+
+	img.profile {
+		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+	}
+
+	.tag {
+		background: #3a3a3a;
+		color: #93c5fd;
+		border-color: #555;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	}
+
+	a.tag:active {
+		background-color: #4a5568;
+		color: #dbeafe;
+		border-color: #93c5fd;
+	}
+
+	strong.tag {
+		background: #3730a3;
+		color: #c7d2fe;
+		border-color: #6366f1;
+	}
+
+	ul.pagination li span {
+		color: #999;
+	}
+
+	.annotation {
+		background: #3a3a3a;
+		border-color: #555;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	}
+
+	.annotation-key {
+		background: #444;
+		color: #cbd5e1;
+		border-right-color: #555;
+	}
+
+	.annotation a.annotation-key {
+		color: #cbd5e1;
+	}
+
+	.annotation a.annotation-key:active {
+		background-color: #555;
+		color: #fff;
+	}
+
+	.annotation-value {
+		background: #3a3a3a;
+		color: #eee;
+	}
+
+	.annotation a.annotation-value {
+		color: #93c5fd;
+	}
+
+	.annotation a.annotation-value:active {
+		background-color: #4a5568;
+		color: #dbeafe;
+	}
+
+	.project-screenshot-previews,
+	.project-explore {
+		background: #3a3a3a;
+		border-color: #555;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	}
+
+	.project-screenshot-previews__link {
+		background: #2b2b2b;
+		border-color: #555;
+	}
+
+	/* span. prefix beats the equal-specificity inline <style> in project templates */
+	span.logo-placeholder {
+		background: #444;
+		color: #aaa;
+		border-color: #555;
+	}
+
+	.screenshot-lightbox__frame {
+		background: #2b2b2b;
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+	}
+
+	.screenshot-lightbox__caption {
+		color: #eee;
+	}
+
+	.screenshot-lightbox__close,
+	.screenshot-lightbox__nav {
+		background: #3a3a3a;
+		border-color: #555;
+		color: #eee;
+	}
+
+	.screenshot-lightbox__close:active,
+	.screenshot-lightbox__nav:active {
+		color: #000;
+		background: #fff;
+	}
+}
+
+/* Hover: text links underline (a:hover above); boxed controls and linked
+   images use the shared accent. Kept last so it wins over state styles. */
+a.tag:hover,
+.annotation a:hover,
+.screenshot-lightbox__close:hover,
+.screenshot-lightbox__nav:hover {
+  background: var(--hover-bg);
+  border-color: var(--hover-border);
+  color: var(--hover-text);
+  text-decoration: none;
+}
+
+.annotation:has(a:hover) {
+  border-color: var(--hover-border);
+}
+
+a:hover > img,
+.project-screenshot-previews__link:hover {
+  box-shadow: 0 0 0 3px var(--hover-border);
+}
+
+a.tag,
+.annotation,
+.annotation a,
+a > img,
+.project-screenshot-previews__link,
+.screenshot-lightbox__close,
+.screenshot-lightbox__nav {
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
 }
