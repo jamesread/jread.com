@@ -3,7 +3,7 @@ title: Flywheel
 featured: true
 ai_usage: "Level 4: Fully Autonomous Engineer"
 types: "Personal Productivity"
-logo: https://raw.githubusercontent.com/jamesread/flywheel/main/frontend/public/icon.svg
+logo: https://raw.githubusercontent.com/jamesread/flywheel/main/logo.svg
 technologies: [Go]
 tags: 
   - go
