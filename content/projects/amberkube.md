@@ -16,5 +16,5 @@ involvement: Founder
 annotations:
   Started: "2025"
 description: |
-  Show Prometheus Alertmanager alerts on heads up displays.
+  The first layer of stuff needed to makes Kubernetes usable.
 ---

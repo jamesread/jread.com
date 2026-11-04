@@ -19,7 +19,7 @@ screenshots:
     description: "Main page on a phone"
 
 annotations:
-  Stars: 3.4k+
+  Stars: 3.9k+
   Users: 1000+
   Started: "2020"
   type: Automation
