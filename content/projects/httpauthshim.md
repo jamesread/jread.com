@@ -10,5 +10,5 @@ involvement: Founder
 annotations:
   Started: "2025"
 description: |
-  A small utility library of bits I use in almost all my Go projects.
+  HTTP Auth against OAuth2, mTLS, external JWT (key/hmac), local users, trusted headers and even HTTP Basic.
 ---

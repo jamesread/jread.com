@@ -14,5 +14,5 @@ involvement: Founder
 annotations:
   Started: "2011"
 description: |
-    A simple, client-side only Progressive Web App (PWA) for building habits.
+  Task tracking that gives power users full control over how they work.
 ---

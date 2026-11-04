@@ -6,4 +6,6 @@ maturity: Production
 involvement: Founder
 types: "Toys"
 repo: jamesread/wordle-solver
+description: |
+  A very simple web app to solve wordle.
 ---

@@ -6,4 +6,6 @@ maturity: Sandbox
 involvement: Founder
 technologies: [Web]
 repo: jamesread/TheDarkStation
+description: |
+  A single player, procedurally generated text adventure game in Go.
 ---
