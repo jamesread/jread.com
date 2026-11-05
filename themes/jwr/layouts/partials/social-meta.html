@@ -1,0 +1,20 @@
+{{- /*
+	Hugo's embedded Open Graph, schema.org and Twitter card meta tags, but with
+	og:title and twitter:title set to "Page | Site" (as in <title>), because many
+	link-preview clients ignore og:site_name.
+*/ -}}
+{{- $title := site.Title -}}
+{{- if and (not .IsHome) .Title (ne .Title site.Title) -}}
+	{{- $title = printf "%s | %s" .Title site.Title -}}
+{{- end -}}
+{{- $title = $title | plainify | htmlEscape -}}
+
+{{- $og := partial "opengraph.html" . -}}
+{{- $og = replaceRE `<meta property="og:title" content="[^"]*">` (printf `<meta property="og:title" content="%s">` $title) $og -}}
+
+{{- $twitter := partial "twitter_cards.html" . -}}
+{{- $twitter = replaceRE `<meta name="twitter:title" content="[^"]*">` (printf `<meta name="twitter:title" content="%s">` $title) $twitter -}}
+
+{{- $og | safeHTML }}
+{{ partial "schema.html" . }}
+{{ $twitter | safeHTML -}}
