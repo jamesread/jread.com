@@ -8,7 +8,7 @@ technologies:
   - Forgejo
   - nginx
   - knative
-maturity: sandbox
+maturity: Sandbox
 repo: jamesread/AmberKube
 tags: [Kubernetes]
 logo: "https://raw.githubusercontent.com/jamesread/AmberKube/main/docs/source/assets/amberkube.svg"
