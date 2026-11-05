@@ -196,7 +196,7 @@ article img.featured {
   margin: 1em auto 1em auto;
 }
 
-footer aside {
+footer .legal {
   color: #666;
   font-size: smaller;
 }
@@ -271,6 +271,10 @@ ul.tags li {
 
 a.tag {
   font-weight: 700;
+}
+
+span.tag {
+  color: #334155;
 }
 
 a.tag:active {
@@ -671,7 +675,7 @@ img.profile {
 		background-color: transparent;
 	}
 
-	footer aside,
+	footer .legal,
 	aside.featuredImageCredit {
 		color: #aaa;
 	}
@@ -737,6 +741,10 @@ img.profile {
 		color: #93c5fd;
 		border-color: #555;
 		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	}
+
+	span.tag {
+		color: #ddd;
 	}
 
 	a.tag:active {

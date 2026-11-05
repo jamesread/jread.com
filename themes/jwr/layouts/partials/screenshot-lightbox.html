@@ -4,6 +4,7 @@
 		<button type="button" class="screenshot-lightbox__nav screenshot-lightbox__nav--prev" aria-label="Previous screenshot" hidden>‹</button>
 		<button type="button" class="screenshot-lightbox__nav screenshot-lightbox__nav--next" aria-label="Next screenshot" hidden>›</button>
 		<figure class="screenshot-lightbox__figure">
+			{{/* src is set by the script below when the lightbox opens */}}{{ "<!-- [html-validate-disable-next element-required-attributes] -->" | safeHTML }}
 			<img class="screenshot-lightbox__img" alt="" decoding="async" />
 			<figcaption class="screenshot-lightbox__caption" hidden></figcaption>
 		</figure>

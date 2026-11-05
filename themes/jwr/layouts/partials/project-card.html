@@ -42,7 +42,7 @@
 				{{ end }}
 
 				{{ range $p.Param "tags" }}
-				<li><a class = "tag" href="">{{ . }}</a></li>
+				<li><span class="tag">{{ . }}</span></li>
 				{{ end }}
 			</ul>
 		</div>
@@ -56,7 +56,7 @@
 		</div>
 	</header>
 	<div class="project-body">
-		<aside class="mt3">{{ $p.Param "description" | default $p.Content | markdownify }}</aside>
+		<div class="mt3">{{ $p.Param "description" | default $p.Content | markdownify }}</div>
 		{{ if $showScreenshotPreviews }}
 			{{ partial "project-screenshot-previews.html" $p }}
 		{{ end }}

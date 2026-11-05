@@ -49,7 +49,7 @@
 		<header>
 			<section class = "flexrow">
 				{{ with resources.Get "jreadProfile.jpg" }}
-					<img src = "{{ .Permalink }}" class = "profile" title = "Picture of James Read" />
+					<img src = "{{ .Permalink }}" class = "profile" alt = "Picture of James Read" />
 				{{ end }}
 
 				<div style = "align-self: center">
@@ -61,7 +61,7 @@
 
 		<hr class = "page" />
 
-		<main role="main">
+		<main>
 			{{ block "main" . }}{{ end }}
 		</main>
 		{{ block "footer" . }}{{ partialCached "site-footer.html" . }}{{ end }}

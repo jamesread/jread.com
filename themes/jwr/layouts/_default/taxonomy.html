@@ -20,9 +20,9 @@ img.logo { width: 6em; vertical-align: top; box-shadow: none !important; }
 
 <aside class="currentPage">You are viewing projects with: 
 	<ul class = "tags" style = "display: inline-block;">
-	<span class = "annotation">
+	<li><span class = "annotation">
 		<span class = "annotation-key">{{ .Section }}</span><span class = "annotation-value">{{ .Title }}</span>
-	</span>
+	</span></li>
 	</ul>
 	You can also see <a href="{{ printf "/%s/" .Section | relLangURL }}">all projects by <span class = "">{{ .Section }}</span></a> if you like.
 </aside>
