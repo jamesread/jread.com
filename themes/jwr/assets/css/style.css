@@ -248,6 +248,8 @@ ul.tags {
 
 ul.tags li {
   display: inline-block;
+  /* Match .annotation, so a .tag's 0.9em equals an .annotation-value's size. */
+  font-size: small;
 }
 
 .tag {
