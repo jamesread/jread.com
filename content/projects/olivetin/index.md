@@ -21,7 +21,7 @@ screenshots:
 annotations:
   Stars: 3.9k+
   Users: 1000+
-  Started: "2020"
+  Started: "2021"
   type: Automation
 description: |
   Give safe and simple access to predefined shell commands from a web interface.
