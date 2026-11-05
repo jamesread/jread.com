@@ -1,0 +1,14 @@
+extends: default
+
+rules:
+  document-start: disable
+  line-length:
+    max: 200
+  truthy:
+    # GitHub Actions uses a bare `on:` key.
+    check-keys: false
+
+ignore: |
+  node_modules/
+  public/
+  resources/

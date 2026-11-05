@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "postcss-cli": "^11.0.0"
+  },
+  "devDependencies": {
+    "html-validate": "^11.18.0",
+    "markdownlint-cli2": "^0.24.0"
   }
 }

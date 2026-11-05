@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""
-Download screenshot manifests published by project repos and sync their
+"""Sync screenshots published by project repos into this site.
+
+Downloads screenshot manifests published by project repos and syncs their
 screenshots into this site.
 
 Each project in content/projects with a `repo:` front matter key is checked for
@@ -29,10 +30,11 @@ import argparse
 import json
 import os
 import subprocess
-import time
 import sys
+import time
 import urllib.error
 import urllib.request
+from http import HTTPStatus
 from pathlib import Path, PurePosixPath
 
 try:
@@ -58,12 +60,14 @@ FRESH_SECONDS = 24 * 60 * 60
 
 def fetch(url: str) -> bytes | None:
     """Return the body at url, or None on 404."""
-    req = urllib.request.Request(url, headers={"User-Agent": "jread.com-update-screenshots"})
+    if not url.startswith("https://"):
+        raise ValueError(f"refusing non-https URL: {url}")
+    req = urllib.request.Request(url, headers={"User-Agent": "jread.com-update-screenshots"})  # noqa: S310 - https enforced above
     try:
-        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:  # noqa: S310
             return resp.read(MAX_IMAGE_BYTES + 1)
     except urllib.error.HTTPError as e:
-        if e.code == 404:
+        if e.code == HTTPStatus.NOT_FOUND:
             return None
         raise
 
@@ -75,7 +79,7 @@ def split_front_matter(content: str) -> tuple[list[str], str]:
         raise ValueError("no front matter")
     for i in range(1, len(lines)):
         if lines[i].strip() == "---":
-            return lines[1:i], "".join(lines[i + 1:])
+            return lines[1:i], "".join(lines[i + 1 :])
     raise ValueError("unterminated front matter")
 
 
@@ -105,7 +109,7 @@ def safe_filename(name: str) -> str:
 
 
 def is_fresh(path: Path) -> bool:
-    """True if path exists and was modified (mtime or ctime) within FRESH_SECONDS."""
+    """Return True if path exists and was modified (mtime or ctime) within FRESH_SECONDS."""
     try:
         st = path.stat()
     except FileNotFoundError:
@@ -151,18 +155,22 @@ def replace_screenshots_block(fm_lines: list[str], block: list[str]) -> list[str
         i += 1
 
     if insert_at is None:
-        insert_at = next((n for n, l in enumerate(out) if l.startswith("annotations:")), len(out))
+        insert_at = next((n for n, line in enumerate(out) if line.startswith("annotations:")), len(out))
     return out[:insert_at] + block + out[insert_at:]
 
 
 def git_tracked(path: Path) -> bool:
-    return subprocess.run(
-        ["git", "ls-files", "--error-unmatch", str(path)],
-        capture_output=True,
-    ).returncode == 0
+    return (
+        subprocess.run(  # noqa: S603
+            ["git", "ls-files", "--error-unmatch", str(path)],  # noqa: S607
+            capture_output=True,
+            check=False,
+        ).returncode
+        == 0
+    )
 
 
-def convert_to_bundle(page: Path, dry_run: bool) -> Path:
+def convert_to_bundle(page: Path, *, dry_run: bool) -> Path:
     bundle = page.with_suffix("")
     target = bundle / "index.md"
     print(f"  converting {page} -> {target}")
@@ -170,7 +178,7 @@ def convert_to_bundle(page: Path, dry_run: bool) -> Path:
         return target
     bundle.mkdir(exist_ok=True)
     if git_tracked(page):
-        subprocess.run(["git", "mv", str(page), str(target)], check=True)
+        subprocess.run(["git", "mv", str(page), str(target)], check=True)  # noqa: S603, S607
     else:
         page.rename(target)
     return target
@@ -187,7 +195,7 @@ def load_manifest(repo: str) -> dict | None:
     return manifest
 
 
-def update_project(page: Path, dry_run: bool, force: bool) -> bool:
+def update_project(page: Path, *, dry_run: bool, force: bool) -> bool:  # noqa: C901, PLR0912
     content = page.read_text(encoding="utf-8")
     fm_lines, body = split_front_matter(content)
     fm = yaml.safe_load("".join(fm_lines)) or {}
@@ -206,7 +214,7 @@ def update_project(page: Path, dry_run: bool, force: bool) -> bool:
         shots.append({**entry, "file": name})
 
     if page.name != "index.md":
-        page = convert_to_bundle(page, dry_run)
+        page = convert_to_bundle(page, dry_run=dry_run)
     shot_dir = page.parent / SCREENSHOT_DIR
 
     wanted = {s["file"] for s in shots}
@@ -268,9 +276,9 @@ def main() -> int:
     updated = 0
     for page in pages:
         try:
-            if update_project(page, args.dry_run, args.force):
+            if update_project(page, dry_run=args.dry_run, force=args.force):
                 updated += 1
-        except Exception as e:  # keep going so one broken repo doesn't block the rest
+        except Exception as e:  # noqa: BLE001, PERF203 - keep going so one broken repo doesn't block the rest
             print(f"{project_name(page)}: ERROR {e}", file=sys.stderr)
             failures += 1
 

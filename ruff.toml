@@ -1,0 +1,14 @@
+target-version = "py310"
+line-length = 120
+
+[lint]
+select = ["ALL"]
+ignore = [
+  "D203", "D213",   # conflicting docstring styles; summary on first line
+  "T201",           # print is the output of these CLI scripts
+  "COM812",         # conflicts with the formatter
+  "INP001",         # scripts/ is not a package
+  "D100", "D101", "D102", "D103", "D107",  # docstrings on every def is noise for small scripts
+  "CPY001",         # no per-file copyright headers
+  "EM", "TRY003",   # inline exception messages are fine in CLI scripts
+]

@@ -1,0 +1,15 @@
+config:
+  default: true
+  # Prose is not hard-wrapped.
+  MD013: false
+  # Front matter `title:` provides the page heading.
+  MD041:
+    front_matter_title: "^\\s*title\\s*[:=]"
+
+globs:
+  - "content/**/*.md"
+  - "*.md"
+
+ignores:
+  - "node_modules/**"
+  - "public/**"
